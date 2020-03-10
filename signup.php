@@ -48,9 +48,9 @@ background-attachment: fixed;">
 			<input class="text" type="text" name="academicid" placeholder="Academic ID (XXXX-XXXX-X)" required="">
 			<input class="text" type="text" name="firstname" placeholder="First Name" required="">
 			<input class="text" type="text" name="lastname" placeholder="Last Name" required="">
-			<input class="text email" type="email" name="email" placeholder="Academic Email (@aiub.edu)" required="">
+			<input class="text-email" type="email" name="email" placeholder="Academic Email (@aiub.edu)" required="">
 			<input class="text" type="password" name="password" placeholder="Password" required="">
-			<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+			<input class="text-w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
 
 			<input type="submit" value="SIGNUP">
 		</form>
@@ -58,7 +58,7 @@ background-attachment: fixed;">
 	</div>
 </div>
 
-<footer id="footer-howitworks">
+<footer id="footer">
 	<div class="bottom">
 		<p>Attendance Scanning Wizard | Developed by Md. Sazid Uddin</p>
 
