@@ -41,15 +41,35 @@ background-attachment: fixed;">
 
 <div class="banner">
 	<h1 id="title">Login</h1>
+	<p>(Students login with VUES credentials)</p>
 	<div class="divider-banner"></div>
 	<div class="agileits-top">
-		<form action="#" method="post">
-			<input class="text" type="text" name="academicid" placeholder="Academic ID or Email" required="">
+		<form action="includes/login.inc.php" method="post">
+			<?php 
+			if (isset($_GET['signup'])) {
+				if ($_GET['signup'] == 'success') {
+					echo '<p>Your account has been created. You can now login</p>';
+				}
+			}
+			if (isset($_GET['error'])) {
+				if ($_GET['error'] == 'invalidlogin') {
+					echo "<p>Invalid Email or ID. Please try again</p>";
+				}
+				if ($_GET['error'] == 'badcred') {
+					echo "<p>The Email/ID or password you've entered is incorrect. Please try again</p>";
+				}
+				if ($_GET['error'] == 'nosession') {
+					echo "<p>Please login first</p>";
+				}
+			}
+			?>
+			<input class="text" type="text" name="email" placeholder="Academic ID or Email" required="">
 			<input class="text" type="password" name="password" placeholder="Password" required="">
 
-			<input type="submit" value="LOGIN">
+			<button type="submit" name="login-submit">LOGIN</button>
 		</form>
 		<p id="already">Need an Account? <a href="signup.php"> Signup Now!</a></p>
+		<p id="reset"><a href="passwordreset.php"> Forgot Password?</a></p>
 	</div>
 </div>
 
@@ -69,6 +89,3 @@ background-attachment: fixed;">
 </body>
 </html>
 
-<?php
-
-?>

@@ -9,6 +9,8 @@ $scan_icon = "images/scan.png";
 $down_win = "images/windows_download.png";
 $down_android = "images/android_download.png";
 $down_ios = "images/ios_download.png";
+
+session_start();
 ?>
 
 <!DOCTYPE html>

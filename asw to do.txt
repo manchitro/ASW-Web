@@ -1,2 +1,0 @@
-1. write html form for faculty signup
-2. write api for faculty account creation

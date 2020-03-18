@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2020 at 06:35 PM
+-- Generation Time: Mar 18, 2020 at 12:25 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -154,10 +154,17 @@ CREATE TABLE `users` (
   `LastName` text NOT NULL,
   `Email` text DEFAULT NULL,
   `Password` text DEFAULT NULL,
-  `Salt` int(11) DEFAULT NULL,
   `UserType` int(11) NOT NULL,
   `CreatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`Id`, `AcademicId`, `FirstName`, `LastName`, `Email`, `Password`, `UserType`, `CreatedAt`) VALUES
+(5, '1111-1111-1', 'Faculty', 'One', 'f1@aiub.edu', '$2y$10$.afGlGQoL0X6yeyVmR2qSe/YJCNCc6a8QwdBHcdPKx/bwXI6TMLXC', 0, '2020-03-16 08:35:33'),
+(7, '2222-2222-2', 'Faculty', 'Two', 'f2@aiub.edu', '$2y$10$eWLdrq/OcMXguN.oGz.HFu9TK2WojUiP5Ngt23.kD.X53MJbWkSj2', 0, '2020-03-17 20:28:02');
 
 -- --------------------------------------------------------
 
@@ -270,7 +277,7 @@ ALTER TABLE `sectiontimes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

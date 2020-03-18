@@ -93,6 +93,9 @@ nav{
 	overflow: hidden;
 }
 
+.banner p{
+	margin-bottom: 10px;
+}
 .banner-signup{
 	font-family: 'Spartan', sans-serif;
 	color: rgb(217,217,217);
@@ -522,6 +525,29 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+	-webkit-transition: .5s all;
+	-moz-transition: .5s all;
+	-o-transition: .5s all;
+	-ms-transition: .5s all;
+	transition: .5s all;
+	background: #8DC26F;
+}
+
+button[type="submit"]{
+	font-size: .9em;
+	color: #fff;
+	background: rgb(64, 189, 214);
+	outline: none;
+	border: 1px solid #76b852;
+	cursor: pointer;
+	padding: 0.9em;
+	-webkit-appearance: none;
+	width: 100%;
+	margin-bottom: 1em;
+	letter-spacing: 4px;
+}
+
+button[type="submit"]:hover {
 	-webkit-transition: .5s all;
 	-moz-transition: .5s all;
 	-o-transition: .5s all;
