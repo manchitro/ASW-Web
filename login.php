@@ -61,6 +61,9 @@ background-attachment: fixed;">
 				if ($_GET['error'] == 'nosession') {
 					echo "<p>Please login first</p>";
 				}
+				if ($_GET['error'] == 'vuesvalfailed') {
+					echo "<p>Could not verify your VUES ID and Password. Please try again</p>";
+				}
 			}
 			?>
 			<input class="text" type="text" name="email" placeholder="Academic ID or Email" required="">

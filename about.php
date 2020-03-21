@@ -58,12 +58,12 @@ background-attachment: fixed;">
 	<div class="divider-banner"></div>
 	<h2 id="title-howitworks">How It Works</h2>
 	<div class="para">
-		<p>Attendance Scanning Wizard was designed to be used in AIUB. The ASW system consists of two type of users: Faculty and Student. Each user group have their designated applications. Available for download <a href="index.html#faculty">here</a>.</p><br>
-		<p><strong>Step 1:</strong> Faculty installs the desktop application on his/her computer.<br><br><strong>Step 2:</strong>After login, faculty will be able to manage his/her sections, students, classes.<br><br><strong>Step 3:</strong> For each class, a QR code will be generated and available to display on that class day. This should be shown during class.<br><br><strong>Step 4:</strong> Students login VUES credentials on their smartphone apps and scan the QR code<br><br><strong>Step 5:</strong> Students apps will then automatically submit the attendance for that class to the ASW server when online. The data will then be updated on the server and in turn, on faculty's desktop app.</p>
+		<p>ASW was designed to be used by the Faculties and Students of American International University-Bangladesh. It works in the following way:</p><br>
+		<p><strong>Step 1:</strong> Faculty logs in to the website on his/her laptop in the classroom.<br><br><strong>Step 2:</strong>After login, faculty will be able to manage(create, update, delete) his/her sections, students, classes etc.<br><br><strong>Step 3:</strong> For each lecture, a QR code will be generated and available to be displayed on that class day. This should be shown using the projector during class time. It will be available for the whole duration of the class. Faculty should project it only when the class is ready to scan.<br><br><strong>Step 4:</strong> Students login with VUES credentials on the website or their smartphone app and scan the QR code<br><br><strong>Step 5:</strong> Students' app will then automatically submit the attendance for that lecture to the ASW server when online. The data will then be updated on the server and in turn, on faculty's account.</p>
 	</div>
 	<div class="divider-banner"></div>
 	<div class="personnel-project">
-		<h2>Project by</h2>
+		<h2>Project developed by</h2>
 		<div class="dev-sazid">
 			<?php echo '<img src="'.$sazid.'">' ?>
 			<h2 id="dev">Md. Sazid Uddin</h2>
@@ -73,7 +73,7 @@ background-attachment: fixed;">
 	</div>
 	<div class="divider-banner"></div>
 	<div class="personnel-web">
-		<h2>ASW Website Development in co-operation with</h2>
+		<h2>ASW Web App Development in co-operation with</h2>
 		<div class="dev-asir">
 			<?php echo '<img src="'.$asir.'">' ?>
 			<h2 id="dev">Asir Intesar Ibne Zaman</h2>

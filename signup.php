@@ -48,18 +48,18 @@ background-attachment: fixed;">
 			<?php
 			if ($_GET) {
 				if ($_GET['error'] == 'academicidexists') {
-					echo "<p>Could not create account. Academic ID already belongs to an account</p>";
+					echo "<p>Could not signup. Academic ID already belongs to an account</p>";
 
 				}
 				elseif ($_GET['error'] == 'emailexists') {
-					echo "<p>Could not create account. Email already belongs to an account</p>";
+					echo "<p>Could not signup. Email already belongs to an account</p>";
 				}
 			}
 			?>
 			<input class="text" type="text" name="academicid" id="academicid" placeholder="Academic ID (XXXX-XXXX-X)" required title="XXXX-XXXX-X format required" pattern="^\d{4}-\d{4}-[1-3]$" value="<?php echo(isset($_GET['academicid']))?$_GET['academicid']:''?>">
 			<input class="text" type="text" name="firstname" id="firstname" placeholder="First Name" required="" value="<?php echo(isset($_GET['firstname']))?$_GET['firstname']:''?>">
 			<input class="text" type="text" name="lastname" id="lastname" placeholder="Last Name" required="" value="<?php echo(isset($_GET['lastname']))?$_GET['lastname']:''?>">
-			<input class="text-email" type="email" name="email" id="email" placeholder="Academic Email (@aiub.edu)" required title="You need an aiub.edu email to sign up" pattern="^[a-zA-Z0-9]+@aiub\.edu$" value="<?php echo(isset($_GET['']))?$_GET['']:''?>">
+			<input class="text-email" type="email" name="email" id="email" placeholder="Academic Email (@aiub.edu)" required title="You need an aiub.edu email to sign up" pattern="^[a-zA-Z0-9]+@aiub\.edu$" value="<?php echo(isset($_GET['email']))?$_GET['email']:''?>">
 			<input class="text" type="password" name="password" id="password" placeholder="Password" required title="Password has to be at lease 6 characters long" pattern=".{6,}">
 			<input class="text-w3lpass" type="password" name="cpassword" id="confirm_password" placeholder="Confirm Password" required="">
 
