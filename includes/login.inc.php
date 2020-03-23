@@ -74,12 +74,12 @@ if(isset($_POST['login-submit']))
 		if(!empty($result)){
 			if((strpos($result, 'Academics')!==false) && (strpos($result, 'Grade Reports')!==false)){
 				$html = str_get_html($result);
-				$name = $html->find('a[href=/Student/Home/Profile] small',0);
+				$name = $html->find('a[href=/Student/Home/Profile] small text',0);
 
 				session_start();
 				$_SESSION['userAcademicId'] = $uid;
 				$_SESSION['userFullName'] = (string)$name;
-				echo $_SESSION['userAcademicId']." ".$_SESSION['userFullName'];
+				//echo $_SESSION['userAcademicId']." ".$_SESSION['userFullName'];
 				header("Location: ../student/dashboard.php");
 				exit();
 			}
