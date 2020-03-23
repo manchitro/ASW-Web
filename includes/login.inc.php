@@ -2,6 +2,7 @@
 if(isset($_POST['login-submit']))
 {
 	require 'dbh.inc.php';
+	include_once('../libs/simple_html_dom.php');
 
 	$uid = $_POST['email'];
 	$password = $_POST['password'];
@@ -70,19 +71,32 @@ if(isset($_POST['login-submit']))
 
 		$result = curl_exec($curl);
 
-		if((strpos($result, 'Academics')!==false) && (strpos($result, 'Grade Reports')!==false)){
-			header("Location: ../student/dashboard.php");
-			exit();
+		if(!empty($result)){
+			if((strpos($result, 'Academics')!==false) && (strpos($result, 'Grade Reports')!==false)){
+				$html = str_get_html($result);
+				$name = $html->find('a[href=/Student/Home/Profile] small',0);
+
+				session_start();
+				$_SESSION['userAcademicId'] = $uid;
+				$_SESSION['userFullName'] = $name;
+
+				header("Location: ../student/dashboard.php");
+				exit();
+			}
+			else{
+				header("Location: ../login.php?error=vuesvalfailed");
+				exit();
+			}
 		}
 		else{
 			header("Location: ../login.php?error=vuesvalfailed");
 			exit();
 		}
 
-}
-else{
-	header("Location: ../login.php?error=invalidlogin");
-}
+	}
+	else{
+		header("Location: ../login.php?error=invalidlogin");
+	}
 }
 else{
 	header("Location: ../login.php?error=directaccess");
