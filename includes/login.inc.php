@@ -78,8 +78,8 @@ if(isset($_POST['login-submit']))
 
 				session_start();
 				$_SESSION['userAcademicId'] = $uid;
-				$_SESSION['userFullName'] = $name;
-
+				$_SESSION['userFullName'] = (string)$name;
+				echo $_SESSION['userAcademicId']." ".$_SESSION['userFullName'];
 				header("Location: ../student/dashboard.php");
 				exit();
 			}
