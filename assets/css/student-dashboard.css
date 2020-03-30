@@ -1,0 +1,99 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+body{
+	background-color: rgb(48,48,48);
+	font-family: sans-serif;
+}
+
+header{
+	background-color: rgb(64,189,214);
+	display: inline-flex;
+	align-items: center;
+	width: 100%;
+}
+
+#message{
+	padding: 15px 20px;
+	width: 80%;
+	font-family: Segoe, Arial, sans-serif;
+	color: rgb(48,48,48);
+}
+
+#message p{
+	margin: 5px 0;
+}
+
+#aid{
+	font-style: italic;
+	font-weight: bold;	
+}
+
+#logout{
+	margin: auto;
+}
+
+#logout button{
+	padding: 7px 10px;
+	color: rgb(69,69,69);
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	background-color: rgb(64,189,214);
+	border: rgb(69,69,69) 2px solid;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+#logout button:hover{
+	background-color: rgb(44,169,194);
+}
+
+#main{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	overflow: hidden;
+	margin: auto;
+	text-align: center;
+}
+
+#scan-div button{
+	max-width: 400px;
+	width: 70vw;
+	height: 200px;
+	margin-top: 50px;
+	font-family: Arial, sans-serif;
+	font-size: 120%;
+	background-color: rgb(48,48,48);
+	border: rgb(64,189,214) 2px solid;
+	color: rgb(217,217,217);
+	cursor: pointer;
+}
+
+#scan-div button:hover{
+	background-color: rgb(69,69,69);
+}
+
+#history-div button{
+	max-width: 400px;
+	width: 70vw;
+	height: 100px;
+	margin-top: 20px;
+	font-family: Arial, sans-serif;
+	font-size: 120%;
+	background-color: rgb(48,48,48);
+	border: rgb(64,189,214) 2px solid;
+	color: rgb(217,217,217);
+	cursor: pointer;
+}
+
+#history-div button:hover{
+	background-color: rgb(69,69,69);
+}

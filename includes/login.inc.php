@@ -35,7 +35,7 @@ if(isset($_POST['login-submit']))
 					$_SESSION['userType'] = $row['UserType'];
 					$_SESSION['userCreatedAt'] = $row['CreatedAt'];
 
-					header("Location: ../faculty/sections.php");
+					header("Location: ../faculty/sections/sections.php");
 				}
 				else{
 					header("Location: ../login.php?error=badcred");
@@ -73,8 +73,16 @@ if(isset($_POST['login-submit']))
 
 		if(!empty($result)){
 			if((strpos($result, 'Academics')!==false) && (strpos($result, 'Grade Reports')!==false)){
-				$html = str_get_html($result);
-				$name = $html->find('a[href=/Student/Home/Profile] small text',0);
+				try{
+					$html = str_get_html($result);
+					$name = $html->find('a[href=/Student/Home/Profile] small text',0);
+
+					if($name == 'Array'){
+						$name = 'Student';
+					}
+				}catch(Exception $e){
+					$name = "Student";
+				}
 
 				session_start();
 				$_SESSION['userAcademicId'] = $uid;
