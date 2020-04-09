@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Dashboard</title>
+<title>Admin Dashboard</title>
 </head>
 
 <body style="background-color:#0090EE;">
