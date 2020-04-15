@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2020 at 12:25 PM
+-- Generation Time: Apr 15, 2020 at 04:24 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -113,6 +113,16 @@ CREATE TABLE `sections` (
   `CreatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`Id`, `SectionName`, `FacultyId`, `CreatedAt`) VALUES
+(28, 'Web Tech [C]', 7, '2020-04-02 22:48:34'),
+(29, 'Web Tech [B]', 7, '2020-04-02 22:49:06'),
+(30, 'Java [D]', 7, '2020-04-02 23:54:23'),
+(32, 'AC Lab [K]', 7, '2020-04-09 19:12:33');
+
 -- --------------------------------------------------------
 
 --
@@ -141,6 +151,19 @@ CREATE TABLE `sectiontimes` (
   `CreatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sectiontimes`
+--
+
+INSERT INTO `sectiontimes` (`Id`, `StartTimeId`, `EndTimeId`, `WeekDayId`, `ClassType`, `RoomNo`, `SectionId`, `CreatedAt`) VALUES
+(11, 0, 4, 0, 1, 'D0503', 28, '2020-04-02 22:48:34'),
+(12, 6, 12, 2, 0, 'D0204', 28, '2020-04-02 22:48:34'),
+(13, 0, 4, 1, 1, 'D0503', 29, '2020-04-02 22:49:06'),
+(14, 0, 6, 3, 0, 'D0203', 29, '2020-04-02 22:49:06'),
+(15, 0, 6, 0, 0, 'D0202', 30, '2020-04-02 23:54:23'),
+(16, 0, 4, 2, 1, '3107', 30, '2020-04-02 23:54:23'),
+(18, 0, 6, 4, 0, '3113', 32, '2020-04-09 19:12:33');
+
 -- --------------------------------------------------------
 
 --
@@ -164,7 +187,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`Id`, `AcademicId`, `FirstName`, `LastName`, `Email`, `Password`, `UserType`, `CreatedAt`) VALUES
 (5, '1111-1111-1', 'Faculty', 'One', 'f1@aiub.edu', '$2y$10$.afGlGQoL0X6yeyVmR2qSe/YJCNCc6a8QwdBHcdPKx/bwXI6TMLXC', 0, '2020-03-16 08:35:33'),
-(7, '2222-2222-2', 'Faculty', 'Two', 'f2@aiub.edu', '$2y$10$eWLdrq/OcMXguN.oGz.HFu9TK2WojUiP5Ngt23.kD.X53MJbWkSj2', 0, '2020-03-17 20:28:02');
+(7, '2222-2222-2', 'Faculty', 'Two', 'f2@aiub.edu', '$2y$10$eWLdrq/OcMXguN.oGz.HFu9TK2WojUiP5Ngt23.kD.X53MJbWkSj2', 0, '2020-03-17 20:28:02'),
+(8, '1', 'Admin', 'One', 'admin', '$2y$10$snPCbKNuHwSIzmGUR0O6IeWFEPm79KOqb/.rixK.f43R04KGjLdcC', 0, '2020-04-09 10:52:09');
 
 -- --------------------------------------------------------
 
@@ -265,19 +289,19 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `sectiontimes`
 --
 ALTER TABLE `sectiontimes`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
