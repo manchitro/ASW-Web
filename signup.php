@@ -49,10 +49,12 @@ background-attachment: fixed;">
 			if ($_GET) {
 				if ($_GET['error'] == 'academicidexists') {
 					echo "<p>Could not signup. Academic ID already belongs to an account</p>";
-
 				}
-				elseif ($_GET['error'] == 'emailexists') {
+				if ($_GET['error'] == 'emailexists') {
 					echo "<p>Could not signup. Email already belongs to an account</p>";
+				}
+				if ($_GET['error'] == 'sqlerrorinsert') {
+					echo "<p>Could not process your request. Please try again!</p>";
 				}
 			}
 			?>

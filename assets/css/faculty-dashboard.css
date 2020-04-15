@@ -52,8 +52,13 @@ header{
 	float: right;
 }
 
+.message{
+	font-size: 80%;
+	padding-right: 100px;
+	font-style: italic;
+}
+
 .welcome p{
-	float: right;
 	margin-right: 10px;
 }
 
@@ -207,10 +212,30 @@ nav #active a:hover{
 .section-box{
 	border: 1px rgb(64,189,248) solid;
 	width: 350px;
-	height: 140px;
+	height: 160px;
 	float: left;
 	padding: 20px;
 	margin: 10px 30px 10px 10px;
+}
+
+.section-box input{
+	padding: 5px;
+	background-color: rgb(48,48,48);
+	border: 1px rgb(64,189,248) solid;
+	color: rgb(217,217,217);
+	cursor: pointer;
+	margin-top: 15px;
+	width: 145px;
+	height: 40px;
+	font-size: 120%;
+}
+
+.section-box button:hover{
+	background-color: rgb(69,69,69);
+}
+
+.students{
+	margin-right: 15px;
 }
 
 .sec-name{
@@ -232,11 +257,15 @@ nav #active a:hover{
 	line-height: 150%;
 }
 
+.section-menu{
+	display: inline-flex;
+}
+
 .section-name-div{
 	font-size: 120%;
 	margin: 20px 20px;
-	padding-right: 10px;
-	border-right: 1px rgb(217,217,217) solid;
+	padding-left: 20px;
+	border-left: 1px rgb(217,217,217) solid;
 	width: 90%;
 	white-space: nowrap;
 }
@@ -255,7 +284,8 @@ nav #active a:hover{
 .section-time{
 	font-size: 100%;
 	margin: 30px 20px;
-	border-right: 1px rgb(217,217,217) solid;
+	padding-left: 20px;
+	border-left: 1px rgb(217,217,217) solid;
 	width: 90%;
 }
 
@@ -285,7 +315,8 @@ nav #active a:hover{
 .one-class{
 	font-size: 100%;
 	margin: 30px 20px;
-	border-right: 1px rgb(217,217,217) solid;
+	padding-left: 20px;
+	border-left: 1px rgb(217,217,217) solid;
 	width: 90%;
 }
 
@@ -295,7 +326,8 @@ nav #active a:hover{
 
 .buttons{
 	margin: 30px 20px;
-	border-right: 1px rgb(217,217,217) solid;
+	padding-left: 20px;
+	border-left: 1px rgb(217,217,217) solid;
 	width: 90%;
 }
 
@@ -308,4 +340,29 @@ nav #active a:hover{
 	height: 30px;
 	font-size: 100%;
 	margin-right: 10px;
+	cursor: pointer;
+}
+
+.button-delete{
+	margin: 30px 20px;
+	padding-left: 20px;
+	border-left: 1px rgb(217,217,217) solid;
+	width: 90%;
+}
+
+.button-delete input{
+	padding: 5px 10px;
+	background-color: rgb(48,48,48);
+	border: 1px solid rgb(243, 64, 64);
+	color: rgb(243, 64, 64);
+	width: 80px;
+	height: 30px;
+	font-size: 100%;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.error1 p{
+	color: red;
+	font-size: 100%;
 }

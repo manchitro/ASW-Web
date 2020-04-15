@@ -45,7 +45,7 @@ if (isset($_POST['signup-submit']))
 					exit();
 				}
 				else{
-					$sql = "INSERT INTO users (AcademicId, FirstName, LastName, Email, Password, Salt, UserType, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, '0', current_timestamp());";
+					$sql = "INSERT INTO users (AcademicId, FirstName, LastName, Email, Password, UserType, CreatedAt) VALUES (?, ?, ?, ?, ?, '0', current_timestamp());";
 					$stmt = mysqli_stmt_init($conn);
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
 						header("Location: ../signup.php?error=sqlerrorinsert");
@@ -54,7 +54,7 @@ if (isset($_POST['signup-submit']))
 					else{
 						$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-						mysqli_stmt_bind_param($stmt, "ssssss", $academicid, $firstname, $lastname, $email, $hashedPassword, $default_salt);
+						mysqli_stmt_bind_param($stmt, "sssss", $academicid, $firstname, $lastname, $email, $hashedPassword);
 						mysqli_stmt_execute($stmt);
 						header("Location: ../login.php?signup=success");
 						exit();	
@@ -63,7 +63,7 @@ if (isset($_POST['signup-submit']))
 			}
 		}
 		mysqli_stmt_close($stmt);
-		mysql_close($conn);
+		mysqli_close($conn);
 	}
 }
 else{
