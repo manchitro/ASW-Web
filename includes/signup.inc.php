@@ -52,7 +52,7 @@ if (isset($_POST['signup-submit']))
 						exit();
 					}
 					else{
-						$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+						$hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
 
 						mysqli_stmt_bind_param($stmt, "sssss", $academicid, $firstname, $lastname, $email, $hashedPassword);
 						mysqli_stmt_execute($stmt);

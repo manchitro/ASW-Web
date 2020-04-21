@@ -1,14 +1,12 @@
 <?php
 if(isset($_POST['login-submit']))
 {
-	require 'dbh.inc.php';
-	include_once('../libs/simple_html_dom.php');
-
 	$uid = $_POST['email'];
 	$password = $_POST['password'];
 
 	//uid matches faculty
 	if (preg_match("/^\d{4}-\d{4}-[1-3]$/", $uid) || preg_match("/^[a-zA-Z0-9]+@aiub\.edu$/", $uid)) {
+		require 'dbh.inc.php';
 		$sql ="SELECT * FROM users WHERE Email=? OR AcademicId=?";
 		$stmt = mysqli_stmt_init($conn);
 
@@ -51,6 +49,7 @@ if(isset($_POST['login-submit']))
 	}
 	//uid matches student
 	elseif (preg_match("/^\d{2}-\d{5}-[1-3]$/", $uid)) {
+		include_once('../libs/simple_html_dom.php');
 		//building post string
 		$data = array("UserName"=>$uid, "Password"=>$password);
 		$postString = http_build_query($data);
@@ -106,6 +105,7 @@ if(isset($_POST['login-submit']))
 	}
 	//uid matches admin
 	elseif ($uid == 'admin') {
+		require 'dbh.inc.php';
 		$sql ="SELECT * FROM users WHERE Email=?";
 		$stmt = mysqli_stmt_init($conn);
 
