@@ -14,6 +14,7 @@ else{
 <head>
 	<title>Student - Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/student-dashboard.css">
+	<link rel="icon" href="../favicon.png">
 </head>
 <body>
 	<header>

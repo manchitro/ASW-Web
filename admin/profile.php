@@ -12,6 +12,7 @@ else{
 <html>
 <head>
   <title>Admin Dashboard</title>
+  <link rel="icon" href="favicon.png">
 </head>
 
 <body>

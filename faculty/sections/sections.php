@@ -5,7 +5,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 	unset($_SESSION['sectionName']);
 }
 else{
-	header("Location: ../login.php?error=nosession");
+	header("Location: ../../login.php?error=nosession");
 	exit();
 }
 
@@ -56,59 +56,12 @@ $classtype['1']='Theory';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">
 	<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+	<link rel="icon" href="../../favicon.png">
 </head>
 <body>
-	<header>
-		<div class="title">
-			<h4>ASW Faculty Portal</h4>
-		</div>
-		<div class="welcome">
-			<?php
-			if(isset($_GET['seccreated'])){
-				echo '<p class="message">Message: Section created "'.$_GET['seccreated'].'"';
-			}
-			if(isset($_GET['secedited'])){
-				echo '<p class="message">Message: Section edited "'.$_GET['secedited'].'"';
-			}
-			if(isset($_GET['secdeleted'])){
-				echo '<p class="message">Message: Section deleted "'.$_GET['secdeleted'].'"';
-			}
-			echo "<p>Welcome, ".$_SESSION['userFirstName']." ".$_SESSION['userLastName']."</p>"; 
-			?>
-			<img src="../../images/login.png">
-		</div>
-	</header>
+	<?php include '../header.php'?>
 	<div class="main">
-		<div class="left-panel">
-			<div class="today-title">
-				<p class="todays-label">Today's classes</p>
-			</div>
-			<div class="todays-classes">
-
-			</div>
-			<nav>
-				<div class="nav-bars" id="active">
-					<img src="../../images/sections.png">
-					<a href="#">Sections</a>
-				</div>
-				<div class="nav-bars">
-					<img src="../../images/classes.png">
-					<a href="classes.php">Classes</a>
-				</div>
-				<div class="nav-bars">
-					<img src="../../images/search.png">
-					<a href="search.php">Search</a>
-				</div>
-				<div class="nav-bars">
-					<img src="../../images/login.png">
-					<a href="profile.php">Profile</a>
-				</div>
-				<div class="nav-bars">
-					<img src="../../images/logout.png">
-					<a href="../includes/logout.inc.php">Logout</a>
-				</div>
-			</nav>
-		</div>
+		<?php include '../navigation.php'?>
 		<div class="right-panel">
 			<div class="page-title">
 				<p>Your Sections</p>
@@ -156,7 +109,7 @@ $classtype['1']='Theory';
 										'<p class="sec-time">'.$weekday[$weekDayId]." ".$classtime[$startTimeId]." - ".$classtime[$endTimeId]." [".$classtype[$classType]."] at ".$room.'</p>';
 									}
 									if(mysqli_stmt_num_rows($stmt2) == 1){
-										echo '<p>Section time 2 not available</p>';
+										echo '<p>2nd class of week not available/applicable</p>';
 									}
 									echo '<div class="section-menu">';
 									echo '<form method="post" action="students.php">';
