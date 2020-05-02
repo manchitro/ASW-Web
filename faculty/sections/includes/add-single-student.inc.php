@@ -12,7 +12,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 
 			require '../../../includes/dbh.inc.php';
 
-			$sql = "SELECT * FROM users where academicid = ?";
+			$sql = "SELECT * FROM users where academicId = ?";
 			$stmt = mysqli_stmt_init($conn);
 
 			if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -25,10 +25,36 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 				mysqli_stmt_bind_param($stmt, "s", $academicId);
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_store_result($stmt);
-				mysqli_stmt_bind_result($stmt, $stu_id, $stu_academicId, $stu_firstname, $stu_lastname, $stu_pass, $stu_userType, $stu_createdAt);
+				mysqli_stmt_bind_result($stmt, $stu_id, $stu_academicId, $stu_firstname, $stu_lastname, $stu_email, $stu_pass, $stu_userType, $stu_createdAt);
 				if(mysqli_stmt_num_rows($stmt) > 0){
 					//if already exists
-					$sql = 
+					if (mysqli_stmt_fetch($stmt)) {
+						$foundId = $stu_id;
+
+						$sql2 = "INSERT INTO sectionstudents (SectionId, StudentId) VALUES (?, ?);";
+						$stmt2 = $stmt = mysqli_stmt_init($conn);
+
+						if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+							$_SESSION['sectionId'] = $sectionId;
+							$_SESSION['sectionName'] = $sectionName;
+							header("Location: ../addstudent.php?error=sqlerror");
+							exit();
+						}
+						else{
+							mysqli_stmt_bind_param($stmt, "ss", $sectionId, $foundId);
+							mysqli_stmt_execute($stmt);
+							$_SESSION['sectionId'] = $sectionId;
+							$_SESSION['sectionName'] = $sectionName;
+							header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname."&existing=Existing%20Student%20");
+							exit();
+						}
+					}
+					else{
+						$_SESSION['sectionId'] = $sectionId;
+						$_SESSION['sectionName'] = $sectionName;
+						header("Location: ../addstudent.php?error=lostid");
+						exit();
+					}
 				}else{
 					//if not already exists
 					$sql = "INSERT INTO users (AcademicId, FirstName, LastName, Email, Password, UserType, CreatedAt) VALUES (?, ?, ?, NULL, NULL, '1', current_timestamp());";
@@ -47,6 +73,24 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 						mysqli_stmt_execute($stmt);
 						$lastInsertId = $stmt->insert_id;
 						echo $academicId." inserted id: ".$lastInsertId;
+
+						$sql2 = "INSERT INTO sectionstudents (SectionId, StudentId) VALUES (?, ?);";
+						$stmt2 = $stmt = mysqli_stmt_init($conn);
+
+						if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+							$_SESSION['sectionId'] = $sectionId;
+							$_SESSION['sectionName'] = $sectionName;
+							header("Location: ../addstudent.php?error=sqlerror");
+							exit();
+						}
+						else{
+							mysqli_stmt_bind_param($stmt2, "ss", $sectionId, $lastInsertId);
+							mysqli_stmt_execute($stmt2);
+							$_SESSION['sectionId'] = $sectionId;
+							$_SESSION['sectionName'] = $sectionName;
+							header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$firstName." ".$lastName."&existing=New%20Student%20");
+							exit();
+						}
 					}
 				}
 			}

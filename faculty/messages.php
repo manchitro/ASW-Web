@@ -11,3 +11,9 @@ if(isset($_GET['secdeleted'])){
 if(isset($_GET['error']) && $_GET['error'] == "addstunosec"){
 	echo '<p class="message">Student could not be added, please try again</p>';
 }
+if(isset($_GET['error']) && $_GET['error'] == "sqlerror"){
+	echo '<p class="message">Operation could not be performed</p>';
+}
+if(isset($_GET['success']) && $_GET['success'] == "added"){
+	echo '<p class="message">'.$_GET['existing'].$_GET['aid'].' '.$_GET['name'].' added to section</p>';
+}

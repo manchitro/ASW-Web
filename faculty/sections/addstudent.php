@@ -62,13 +62,13 @@ else{
 							<p>Or</p>
 						</div>
 					</form>
-					<form action="import.php" method="post">
+					<form action="importspreadsheet.php" method="post">
 						<div class="import-spreadsheet-title">
 							<p>Import Spreadsheet</p>
 						</div>
 						<div class="import-spreadsheet-main">
 							<p>Disclaimer: Spreadsheet import is an experimental feature. Please read the instructions first.</p>
-							<p>Instructions for impporting spreadsheet:</p>
+							<p>Instructions for importing spreadsheet:</p>
 							
 								<input type="hidden" name="sectionid" value="<?php echo $sectionid;?>">
 								<input type="hidden" name="sectionName" value="<?php echo $sectionName;?>">

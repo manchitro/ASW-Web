@@ -138,7 +138,7 @@ nav #active{
 
 nav #active a:hover{
 	color: rgb(217,217,217);
-	cursor: default;
+	cursor: pointer;
 }
 
 .right-panel{
