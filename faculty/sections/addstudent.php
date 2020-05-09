@@ -35,6 +35,7 @@ else{
 		<?php include '../navigation.php'?>
 		<div class="right-panel">
 			<div class="page-title">
+				<a href="students.php"><button class="back-button"><img src="../../images/back.png"></button></a>
 				<p>Add students in <?php echo $_POST['sectionName']?></p>
 			</div>
 			<div class="main-container">

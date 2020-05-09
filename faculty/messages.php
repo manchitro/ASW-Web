@@ -17,3 +17,6 @@ if(isset($_GET['error']) && $_GET['error'] == "sqlerror"){
 if(isset($_GET['success']) && $_GET['success'] == "added"){
 	echo '<p class="message">'.$_GET['existing'].$_GET['aid'].' '.$_GET['name'].' added to section</p>';
 }
+if(isset($_GET['success']) && $_GET['success'] == "removedstudents"){
+	echo '<p class="message">Selected students were removed from section</p>';
+}

@@ -82,6 +82,7 @@ header{
 	width: 20vw;
 	min-width: 250px;
 	background-color: rgb(59,59,59);
+	border-top: 1px rgb(217,217,217) solid;
 	height: 6vh;
 	text-align: center;
 	display: flex;
@@ -165,7 +166,7 @@ nav #active a:hover{
 
 .addsection-button{
 	height: 40px;
-	width: 130px;
+	width: 150px;
 	font-size: 90%;
 	padding: 7px 10px;
 	color: rgb(217,217,217);
@@ -200,6 +201,10 @@ nav #active a:hover{
 	background-color: rgb(69,69,69);
 }
 
+.addsection-button:active{
+	background-color: rgb(36,36,36);
+}
+
 .main-container{
 	overflow-y: auto;
 	width: 100%;
@@ -207,6 +212,16 @@ nav #active a:hover{
 	padding-left: 30px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+.main-container-table{
+	overflow-y: auto;
+	width: 100%;
+	height: 82vh;
+}
+
+.main-container-table p{
+	margin: 20px;
 }
 
 .section-box{
@@ -225,7 +240,8 @@ nav #active a:hover{
 	color: rgb(217,217,217);
 	cursor: pointer;
 	margin-top: 15px;
-	width: 145px;
+	margin-right: 10px;
+	width: 96px;
 	height: 40px;
 	font-size: 120%;
 }
@@ -259,6 +275,14 @@ nav #active a:hover{
 
 .section-menu{
 	display: inline-flex;
+}
+
+.section-menu input:hover{
+	background-color: rgb(69,69,69);
+}
+
+.section-menu input:active{
+	background-color: rgb(36,36,36);
 }
 
 .section-name-div{
@@ -411,6 +435,10 @@ nav #active a:hover{
 	cursor: pointer;
 }
 
+.add-single-student-button input:hover{
+	background-color: rgb(146, 221, 252);
+}
+
 .or-divider p{
 	font-size: 120%;
 	margin: 20px 10px;
@@ -427,7 +455,7 @@ nav #active a:hover{
 }
 
 .import-spreadsheet-main{
-	margin-left: 20px;
+	margin-left: 25px;
 	margin-right: 10px;
 	margin-top: 10px;
 }
@@ -445,5 +473,70 @@ nav #active a:hover{
 	width: 80px;
 	height: 30px;
 	font-size: 100%;
+	cursor: pointer;
+}
+
+.import-spreadsheet-main input:hover{
+	background-color: rgb(146, 221, 252);
+}
+
+.student-table{
+	border-collapse: collapse;
+	font-size: 95%;
+	text-align: left;
+	cursor: default;
+}
+
+.student-table th{
+	font-weight: normal;
+	background-color: rgb(230,230,230);
+	padding: 5px 10px 5px 10px;
+	color: rgb(48,48,48);
+}
+
+.student-table tr:hover{
+	background-color: rgb(89,89,89) !important;
+}
+
+.student-table tr:nth-child(even) {
+	background-color: rgb(60,60,60);
+}
+
+.student-table td{
+	padding: 7px 10px 7px 10px;
+	font-size: 95%;
+}
+
+.student-table td:nth-child(1){
+	width: auto;
+}
+
+.student-table td:nth-child(2){
+	width: 120px;
+}
+
+.student-table td:nth-child(3){
+	width: 300px;
+}
+
+.student-table input[type="checkbox"]{
+	-ms-transform: scale(1.5); /* IE */
+	-moz-transform: scale(1.5); /* FF */
+	-webkit-transform: scale(1.5); /* Safari and Chrome */
+	-o-transform: scale(1.5); /* Opera */
+	align-self: center;
+}
+
+.student-remove-form input[type="submit"]{
+	padding: 5px 10px;
+	background-color: rgb(48,48,48);
+	border: 1px solid rgb(243, 64, 64);
+	color: rgb(243, 64, 64);
+	width: auto;
+	height: 30px;
+	font-size: 100%;
+	margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 20px;
 	cursor: pointer;
 }

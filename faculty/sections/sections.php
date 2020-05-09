@@ -92,7 +92,7 @@ $classtype['1']='Theory';
 							$sql2 = "SELECT * FROM sectionTimes WHERE sectionId = ?;";
 							$stmt2 = mysqli_stmt_init($conn);
 							if(!mysqli_stmt_prepare($stmt2, $sql2)){
-								echo '<p class="error-msg">Error retrieving your data</p>';
+								echo '<p class="error-msg">Error retrieving your data - sectiontimes'.mysqli_error($conn).'</p>';
 							}
 							else{
 								mysqli_stmt_bind_param($stmt2, "s", $sectionId);
@@ -116,6 +116,11 @@ $classtype['1']='Theory';
 									echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
 									echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
 									echo '<input type="submit" class="students" value="Students">';
+									echo '</form>';
+									echo '<form method="post" action="classes.php">';
+									echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
+									echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
+									echo '<input type="submit" class="classes" value="Classes">';
 									echo '</form>';
 									echo '<form method="post" action="editsection.php">';
 									echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';

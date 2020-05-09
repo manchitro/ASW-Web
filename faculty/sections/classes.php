@@ -25,7 +25,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Faculty - Students</title>
+	<title>Faculty - Classes</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">
@@ -38,24 +38,19 @@ else{
 		<div class="right-panel">
 			<div class="page-title">
 				<a href="sections.php"><button class="back-button"><img src="../../images/back.png"></button></a>
-				<p>Student list of <?php echo $_POST['sectionName']?></p>
+				<p>Classes of <?php echo $_POST['sectionName']?></p>
 				<?php
-				echo '<form method="post" action="addstudent.php">';
+				echo '<form method="post" action="createclass.php">';
 				echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
 				echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
-				echo '<input type="submit" class="addsection-button" value="Add Students">';
-				echo '</form>';
-				echo '<form method="post" action="removestudents.php">';
-				echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
-				echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
-				echo '<input type="submit" class="addsection-button" value="Remove Students">';
+				echo '<input type="submit" class="addsection-button" value="Create Class">';
 				echo '</form>';
 				?>
 			</div>
 			<div class="main-container-table">
 				<?php
 				require '../../includes/dbh.inc.php';
-				$sql = "SELECT * FROM users where Id in (SELECT studentId from sectionstudents where sectionId = ?);";
+				$sql = "SELECT * FROM classes where sectionId = ?;";
 				$stmt = mysqli_stmt_init($conn);
 				if (!mysqli_stmt_prepare($stmt, $sql)) {
 					echo '<p class="error-msg">Error retrieving data</p>';
@@ -64,27 +59,12 @@ else{
 					mysqli_stmt_bind_param($stmt, "s", $sectionId);
 					mysqli_stmt_execute($stmt);
 					mysqli_stmt_store_result($stmt);
-					mysqli_stmt_bind_result($stmt, $stu_id, $stu_academicId, $stu_firstname, $stu_lastname, $stu_email, $stu_pass, $stu_userType, $stu_createdAt);
+					mysqli_stmt_bind_result($stmt, $classId, $classSectionId, $classDate, $classType, $classStartTimeId, $classEndTimeId, $classRoomNo, $classQRCode, $classQRDisplayStartTime, $classQRDisplayEndTime, $classCreatedAt);
 					if(mysqli_stmt_num_rows($stmt) == 0){
-						echo "<p>There are no students in this section. Please add students using the button above.";
+						echo "<p>No classes found. Add a class using the button above.</p>";
 					}
 					else{
-						echo '<table class="student-table">';
-						echo '<tr>';
-						echo '<th>#</th>';
-						echo '<th>Academic ID</th>';
-						echo '<th>Name</th>';
-						echo '</tr>';
-						$index = 1;
-						while (mysqli_stmt_fetch($stmt)){
-							echo '<tr>';
-							echo '<td>'.$index.'</td>';
-							echo '<td>'.$stu_academicId.'</td>';
-							echo '<td>'.$stu_firstname." ".$stu_lastname.'</td>';
-							echo '</tr>';
-							$index++;
-						}
-						echo '</table>';
+						
 					}
 				}
 				?>

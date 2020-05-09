@@ -122,6 +122,9 @@ else{
 						<br>
 						Room: <input type="text" name="room-1" placeholder="i.e. 1115/D0203" required="" value="<?php echo(isset($_GET['r1']))?$_GET['r1']:''?>">
 					</div>
+					<div class="one-class">
+						Select if this section has only one class per week (Section time 2 will be ignored) <input type="checkbox" name="one-class" value="1">
+					</div>
 					<div class="section-time">
 						<div class="error1">
 							<?php
@@ -213,11 +216,8 @@ else{
 						<label for="theory">Theory</label><br>
 						Room: <input type="text" name="room-2" placeholder="i.e. 1115/D0203" value="<?php echo(isset($_GET['r2']))?$_GET['r2']:''?>">
 					</div>
-					<div class="one-class">
-						Select if this section has only one class per week (Section time 2 will be ignored) <input type="checkbox" name="one-class" value="1">
-					</div>
 					<div class="buttons">
-						<input type="submit" name="submit">
+						<input type="submit" name="submit" value="Create">
 					</div>
 				</form>
 			</div>
