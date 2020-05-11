@@ -1,19 +1,21 @@
 <?php
-  if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['qbox']) ) {
-    $getQuery = $_POST['qbox'];
+require '../includes/dbh.inc.php';
 
-    $sql = $getQuery;
-    $result = mysqli_query($conn, $sql);
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['qbox']) ) {
+  $getQuery = $_POST['qbox'];
+
+  $sql = $getQuery;
+  $result = mysqli_query($conn, $sql);
 
 
     # Exception Handler: IF NOT A SQL QUERY
-    if(!$result) {
-      echo "Not a SQL Query Found !" . "<br>";
-      exit();
-    }
+  if(!$result) {
+    echo "Not a SQL Query Found !" . "<br>";
+    exit();
+  }
 
     # RETURNS DATA
-    if (mysqli_num_rows($result) > 0) {
+  if (mysqli_num_rows($result) > 0) {
 
 
 
@@ -24,8 +26,8 @@
     
     foreach($arr as $x => $value) {
       if($value == "from") {
-            $getTableName = $arr[$x+1];
-        }
+        $getTableName = $arr[$x+1];
+      }
     }
     
     $chopSemicolon = chop($getTableName,";");
@@ -51,18 +53,18 @@
 
 
         // output data of each row
-        while($row = mysqli_fetch_assoc($result)) {
-            foreach($row as $value) {
-              echo "<div style='border: 1px solid #FFF; color: #000; padding: 5px; width: 130px;; display: inline-block; background-color: #CCC; overflow: scroll; height: 40px;'>" . $value . "</div>";
-            }
-            echo "<br><br>";
-        }
-    } else {
-        echo "0 results";
+    while($row = mysqli_fetch_assoc($result)) {
+      foreach($row as $value) {
+        echo "<div style='border: 1px solid #FFF; color: #000; padding: 5px; width: 130px;; display: inline-block; background-color: #CCC; overflow: scroll; height: 40px;'>" . $value . "</div>";
+      }
+      echo "<br><br>";
     }
-    
   } else {
-    echo "Write Query !!";
+    echo "0 results";
   }
-  
+
+} else {
+  echo "Write Query !!";
+}
+
 ?>

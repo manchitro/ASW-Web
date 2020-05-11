@@ -4,15 +4,7 @@ $gh_icon = "images/gh_icon.png";
 $fb_icon = "images/fb_icon.png";
 $gmail_icon = "images/gmail_icon.png";
 
-session_start();
-if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
-	if(isset($_SESSION['userType']) && $_SESSION['userType'] == 0){
-		header("Location: faculty/sections/sections.php");
-	}
-	else if(isset($_SESSION['userType']) && $_SESSION['userType'] == 1){
-		header("Location: student/dashboard.php");
-	}
-}
+include 'includes/autologin.inc.php';
 ?>
 
 <!DOCTYPE html>

@@ -540,3 +540,42 @@ nav #active a:hover{
 	margin-left: 20px;
 	cursor: pointer;
 }
+
+.class-info{
+	font-size: 100%;
+	margin: 30px 20px;
+	padding-left: 20px;
+	border-left: 1px rgb(217,217,217) solid;
+	width: 90%;
+}
+
+.class-info p{
+	margin-bottom: 10px;
+	font-size: 120%;
+}
+
+.class-info select{
+	padding: 5px;
+	background-color: rgb(38,38,38);
+	color: rgb(217,217,217);
+	font-size: 100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.class-info input{
+	padding: 5px 10px;
+	font-size: 100%;
+	background-color: rgb(38,38,38);
+	border: 0px solid;
+	margin: 10px 5px 10px 5px;
+	color: rgb(217,217,217);
+}
+
+.date-selector p{
+	display: inline-block;
+}
+
+.date-selector input[type="date"]{
+	display: inline-block;
+}
