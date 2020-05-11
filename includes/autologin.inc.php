@@ -1,4 +1,4 @@
-session_start();
+<?php session_start();
 if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 	if ($_SESSION['userEmail'] == "admin") {
 		header("Location: admin/profile.php");
