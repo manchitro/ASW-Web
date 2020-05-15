@@ -28,7 +28,7 @@ else{
       Change Password
     </button>
 
-    <a class="btn btn-danger" href="../logout.php">Log Out</a>
+    <a class="btn btn-danger" href="logout.php">Log Out</a>
   </div>
 
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method ="POST">
