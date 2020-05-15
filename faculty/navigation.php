@@ -11,10 +11,6 @@
 			<a href="sections.php">Sections</a>
 		</div>
 		<div class="nav-bars">
-			<img src="../../images/classes.png">
-			<a href="../classes/classes.php">Classes</a>
-		</div>
-		<div class="nav-bars">
 			<img src="../../images/search.png">
 			<a href="../search/search.php">Search</a>
 		</div>

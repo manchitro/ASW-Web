@@ -53,41 +53,84 @@ else{
 				?>
 			</div>
 			<div class="main-container-table">
-				<?php
-				require '../../includes/dbh.inc.php';
-				$sql = "SELECT * FROM users where Id in (SELECT studentId from sectionstudents where sectionId = ?);";
-				$stmt = mysqli_stmt_init($conn);
-				if (!mysqli_stmt_prepare($stmt, $sql)) {
-					echo '<p class="error-msg">Error retrieving data</p>';
-				}
-				else{
-					mysqli_stmt_bind_param($stmt, "s", $sectionId);
-					mysqli_stmt_execute($stmt);
-					mysqli_stmt_store_result($stmt);
-					mysqli_stmt_bind_result($stmt, $stu_id, $stu_academicId, $stu_firstname, $stu_lastname, $stu_email, $stu_pass, $stu_userType, $stu_createdAt);
-					if(mysqli_stmt_num_rows($stmt) == 0){
-						echo "<p>There are no students in this section. Please add students using the button above.";
+				<table class="student-table">
+					<?php
+					$index = 1;
+					require '../../includes/dbh.inc.php';
+
+					$sql2 = "SELECT * FROM classes where SectionId = ? ORDER BY classDate;";
+					$stmt2 = mysqli_stmt_init($conn);
+					if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+						echo '<p class="error-msg">Error retrieving data</p>';
 					}
 					else{
-						echo '<table class="student-table">';
+						mysqli_stmt_bind_param($stmt2, "s", $sectionId);
+						mysqli_stmt_execute($stmt2);
+						mysqli_stmt_store_result($stmt2);
+						mysqli_stmt_bind_result($stmt2, $class_id, $class_sectionId, $class_date, $class_type, $class_startTimeId, $class_endTimeId, $class_roomNo, $class_QRCode, $class_QRCodeDisplayStartTIme, $class_QRCodeDisplayEndTIme, $class_createdAt);
+
 						echo '<tr>';
-						echo '<th>#</th>';
-						echo '<th>Academic ID</th>';
-						echo '<th>Name</th>';
+						echo '<th>#</th><th>ID</th><th>Name</th>';
+						while (mysqli_stmt_fetch($stmt2)) {
+							$formattedDate = date("M d", strtotime($class_date));
+							echo '<th>'.$formattedDate.'</th>';
+						}
 						echo '</tr>';
-						$index = 1;
-						while (mysqli_stmt_fetch($stmt)){
+					}
+
+					$sql = "SELECT * FROM users where Id in (SELECT studentId from sectionstudents where sectionId = ?);";
+					$stmt = mysqli_stmt_init($conn);
+					if (!mysqli_stmt_prepare($stmt, $sql)) {
+						echo '<p class="error-msg">Error retrieving data</p>';
+					}
+					else{
+						mysqli_stmt_bind_param($stmt, "s", $sectionId);
+						mysqli_stmt_execute($stmt);
+						mysqli_stmt_store_result($stmt);
+						mysqli_stmt_bind_result($stmt, $stu_id, $stu_academicId, $stu_firstname, $stu_lastname, $stu_email, $stu_pass, $stu_userType, $stu_createdAt);
+						while(mysqli_stmt_fetch($stmt)){
 							echo '<tr>';
-							echo '<td>'.$index.'</td>';
-							echo '<td>'.$stu_academicId.'</td>';
-							echo '<td>'.$stu_firstname." ".$stu_lastname.'</td>';
+							echo '<td>'.$index.'</td>'.'<td>'.$stu_academicId.'</td>'.'<td>'.$stu_firstname.' '.$stu_lastname.'</td>';
+						//for each student
+						//echo $stu_id.' '.$stu_academicId.' '.$stu_firstname.' '.$stu_lastname.' '.$stu_email.' '.$stu_pass.' '.$stu_userType.' '.$stu_createdAt.'<br>';
+
+							$sql2 = "SELECT * FROM classes where SectionId = ?;";
+							$stmt2 = mysqli_stmt_init($conn);
+							if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+								echo '<p class="error-msg">Error retrieving data</p>';
+							}
+							else{
+								mysqli_stmt_bind_param($stmt2, "s", $sectionId);
+								mysqli_stmt_execute($stmt2);
+								mysqli_stmt_store_result($stmt2);
+								mysqli_stmt_bind_result($stmt2, $class_id, $class_sectionId, $class_date, $class_type, $class_startTimeId, $class_endTimeId, $class_roomNo, $class_QRCode, $class_QRCodeDisplayStartTIme, $class_QRCodeDisplayEndTIme, $class_createdAt);
+								while(mysqli_stmt_fetch($stmt2)){
+								//for each class
+								//echo $class_id.' '.$class_sectionId.' '.$class_date.' '.$class_type.' '.$class_startTimeId.' '.$class_endTimeId.' '.$class_roomNo.' '.$class_QRCode.' '.$class_QRCodeDisplayStartTIme.' '.$class_QRCodeDisplayEndTIme.' '.$class_createdAt.'<br>';
+
+									$sql3 = "SELECT * FROM attendances where ClassId = ? AND StudentId = ? ORDER BY StudentId;";
+									$stmt3 = mysqli_stmt_init($conn);
+									if (!mysqli_stmt_prepare($stmt3, $sql3)) {
+										echo '<p class="error-msg">Error retrieving data</p>';
+									}
+									else{
+										mysqli_stmt_bind_param($stmt3, "ss", $class_id, $stu_id);
+										mysqli_stmt_execute($stmt3);
+										mysqli_stmt_store_result($stmt3);
+										mysqli_stmt_bind_result($stmt3, $att_id, $att_studentId, $att_classId, $att_entry, $att_scanTime, $att_createdAt);
+										while(mysqli_stmt_fetch($stmt3)){
+										//echo $att_id.' '.$att_studentId.' '.$att_classId.' '.$att_entry.' '.$att_scanTime.' '.$att_createdAt.'<br>';
+											echo '<td>'.$att_entry.'</td>';
+										}
+									}
+								}
+							}
 							echo '</tr>';
 							$index++;
 						}
-						echo '</table>';
 					}
-				}
-				?>
+					?>
+				</table>
 			</div>
 		</div>
 	</body>

@@ -68,7 +68,7 @@ $_SESSION['sectionName'] = $sectionName;
 						echo "<p>There are no students in this section.";
 					}
 					else{
-						echo '<form action="includes/remove-student.inc.php" method="post" class="student-remove-form">';
+						echo '<form action="includes/remove-student.inc.php" method="post" class="student-remove-form" onsubmit="return confirm(\'Are your sure you want to remove selected student(s)? All attendance data will be deleted pemanently!\')">';
 						echo '<table class="student-table">';
 						echo '<tr>';
 						echo '<th>#</th>';

@@ -1,13 +1,15 @@
 <?php
 session_start();
 if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
-	if(isset($_POST['sectionId']) && $_POST['sectionId'] !== ""){
+	if(isset($_POST['sectionId']) && $_POST['sectionId'] !== "" && isset($_POST['classId']) && $_POST['classId'] !== ""){
 		$sectionId = $_POST['sectionId'];
 		$sectionName = $_POST['sectionName'];
+		$classId = $_POST['classId'];
 	}
-	else if (isset($_SESSION['sectionId'])){
+	else if (isset($_SESSION['sectionId']) && isset($_SESSION['classId'])){
 		$sectionId = $_POST['sectionId'] = $_SESSION['sectionId'];
 		$sectionName = $_POST['sectionName'] = $_SESSION['sectionName'];
+		$classId = $_POST['classId'] = $_SESSION['classId'];
 	}
 	else{
 		header("Location: sections.php");
@@ -19,58 +21,36 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 	$sectionId = $_POST['sectionId'];
 	$sectionName = $_POST['sectionName'];
 
-	$sql2 = "SELECT * FROM sectionTimes WHERE sectionId = ?;";
+	$sql2 = "SELECT * FROM classes WHERE Id = ?;";
 	$stmt2 = mysqli_stmt_init($conn);
 	if(!mysqli_stmt_prepare($stmt2, $sql2)){
 		echo '<p class="error-msg">Error retrieving your data. Please go back and try again!</p>';
 	}
 	else{
-		mysqli_stmt_bind_param($stmt2, "s", $sectionId);
+		mysqli_stmt_bind_param($stmt2, "s", $classId);
 		mysqli_stmt_execute($stmt2);
 		mysqli_stmt_store_result($stmt2);
-		mysqli_stmt_bind_result($stmt2, $sectionTimeId, $startTimeId, $endTimeId, $weekDayId, $classType, $room, $sectionId, $createdAt);
+		mysqli_stmt_bind_result($stmt2, $classId, $classSectionId, $classDate, $classType, $classStartTimeId, $classEndTimeId, $classRoomNo, $classQRCode, $classQRDisplayStartTime, $classQRDisplayEndTime, $classCreatedAt);
 		if(mysqli_stmt_num_rows($stmt2) == 0){
-			echo "<p>Error: No section time found</p>";
+			echo "<p>Error: Class not found</p>";
 		}
 		else{
-				//record section time 1
 			if(mysqli_stmt_fetch($stmt2)){
-				$time1id = $sectionTimeId;
-				$st1 = $startTimeId;
-				$et1 = $endTimeId;
-				$wt1 = $weekDayId;
+				$cId = $classId;
+				$cSecId = $classSectionId;
+				$cDate = $classDate;
 				$ct1 = $classType;
-				$room1 = $room;
+				$st1 = $classStartTimeId;
+				$et1 = $classEndTimeId;
+				$room1 = $classRoomNo;
+				$cQR = $classQRCode;
+				$cQRStart = $classQRDisplayStartTime;
+				$cQREnd = $classQRDisplayEndTime;
+				$cCreated = $classCreatedAt;
 			}
 			else{
-				$time1id = -1;
-				$st1 = 0;
-				$et1 = 0;
-				$wt1 = 0;
-				$ct1 = 0;
-				$room1 = "";
-			}
-
-				//record section time 2
-			if(mysqli_stmt_fetch($stmt2)){
-				$time2id = $sectionTimeId;
-				$st2 = $startTimeId;
-				$et2 = $endTimeId;
-				$wt2 = $weekDayId;
-				$ct2 = $classType;
-				$room2 = $room;
-
-				$oneClass = false;
-			}
-			else{
-				$time2id = -1;
-				$st2 = 0;
-				$et2 = 0;
-				$wt2 = 0;
-				$ct2 = 0;
-				$room2 = "";
-
-				$oneClass = true;
+				header("Location: sections.php");
+				exit();
 			}
 		}
 	}
@@ -86,7 +66,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Faculty - Create Class</title>
+	<title>Faculty - Edit Class</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">
@@ -99,12 +79,12 @@ else{
 		<div class="right-panel">
 			<div class="page-title">
 				<a href="students.php"><button class="back-button"><img src="../../images/back.png"></button></a>
-				<p>Create a class for <?php echo $_POST['sectionName']?></p>
+				<p>Edit class of <?php echo $_POST['sectionName']?></p>
 			</div>
 			<div class="main-container">
-				<form method="post" action="includes/create-class.inc.php">
+				<form method="post" action="includes/edit-class.inc.php">
 					<div class="section-time">
-						<p>Enter class's date, time, type and place (the default is autofilled with section time 1)</p>
+						<p>Edit class's date, time, type and place</p>
 						<div class="error1">
 							<?php
 							if (isset($_GET['error'])) {
@@ -123,7 +103,7 @@ else{
 							}
 							?>
 						</div>	
-						Date: <input type="date" name="class-date" value='<?php echo date("Y\-m\-d")?>' min='<?php echo date("Y\-m\-d")?>' max='<?php echo date("Y\-m\-d", strtotime("+1 year"))?>'>
+						Date: <input type="date" name="class-date" max='<?php echo date("Y\-m\-d", strtotime("+1 year"))?>' value='<?php echo $cDate?>'>
 						from <select name="start-time">
 							<option value="0" <?php if ( $st1 == 0 ) echo 'selected' ; ?> >8:00</option>
 							<option value="1" <?php if ( $st1 == 1 ) echo 'selected' ; ?> >8:30</option>
@@ -189,11 +169,20 @@ else{
 					</div>
 					<input type="hidden" name="sectionId" value="<?php echo $sectionId;?>">
 					<input type="hidden" name="sectionName" value="<?php echo $sectionName;?>">
+					<input type="hidden" name="classId" value="<?php echo $classId;?>">
 					<div class="buttons">
-						<input type="submit" name="submit" value="Create" class="save-button">
+						<input type="submit" name="submit" value="Save" class="save-button">
 					</div>
 				</form>
+				<div class="button-delete">
+					<form method="post" action="includes/delete-class.inc.php" id="deleteForm" onsubmit="return confirm('Are your sure you want to delete this class? All attendance data will be deleted pemanently!')">
+						<input type="hidden" name="sectionId" value="<?php echo $sectionId;?>">
+						<input type="hidden" name="sectionName" value="<?php echo $sectionName;?>">
+						<input type="hidden" name="classId" value="<?php echo $classId;?>">
+						<input type="submit" name="submit" value="Delete"/>
+					</form>
+				</div>	
 			</div>
 		</div>
 	</body>
-	</html>
+	</html>	

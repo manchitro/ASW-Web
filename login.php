@@ -23,24 +23,7 @@ background-size: cover;
 background-repeat: no-repeat;
 background-position: center center;
 background-attachment: fixed;">
-<header>
-	<nav>
-		<div class="logo"><a href="index.html"><strong>Attendance Scanning Wizard</strong></a></div>
-		<ul class="nav-links">
-			<li><a href="index.php">Home</a></li>
-			<li><a href="login.php">Login</a></li>
-			<li><a href="signup.php">Signup</a></li>
-			<li><a href="about.php">About</a></li>
-		</ul>
-		<div class="burger">
-			<div class="line1"></div>
-			<div class="line2"></div>
-			<div class="line3"></div>
-		</div>
-	</nav>
-</header>
-
-<script src="assets/js/app.js"></script>
+<?php include 'header.php';?>
 
 <div class="banner">
 	<h1 id="title">Login</h1>
@@ -79,19 +62,7 @@ background-attachment: fixed;">
 	</div>
 </div>
 
-<footer id="footer-login">
-	<div class="bottom">
-		<p>Attendance Scanning Wizard | Developed by Md. Sazid Uddin</p>
-
-		<div class="contact">
-			<ul class="contact-list">
-				<li><?php echo '<a href="https://github.com/manchitro/"><img src="'.$gh_icon.'"></a>' ?></li>
-				<li><?php echo '<a href="https://www.facebook.com/doctorwhouse"><img src="'.$fb_icon.'"></a>' ?></li>
-				<li><?php echo '<a href="mailto:initialsaremsu@gmail.com"><img src="'.$gmail_icon.'"></a>' ?></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+<?php include 'footer.php';?>
 </body>
 </html>
 

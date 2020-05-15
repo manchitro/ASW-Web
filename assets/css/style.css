@@ -6,6 +6,7 @@
 
 html{
 	scroll-behavior: smooth;
+	height: 100%;
 }
 
 body{
@@ -14,6 +15,9 @@ body{
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 }
 
 nav{
@@ -86,7 +90,7 @@ nav{
 	width: 70%;
 	margin: auto;
 	text-align: center;
-	height: 80vh;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -238,7 +242,7 @@ nav{
 footer{
 	font-family: 'Spartan', sans-serif;
 	color: rgb(217,217,217);
-	min-height: auto;
+	margin-top: auto;
 	background-color: rgb(20,20,20);
 	display: flex;
 	justify-content: center;
@@ -247,8 +251,6 @@ footer{
 	font-size: 12px;
 	font-weight: bold;
 	filter: drop-shadow();
-	bottom: 0;
-	position: relative;
 	width: 100%;
 	border-top: 5px rgb(64, 189, 214) solid;
 }
@@ -1092,6 +1094,7 @@ input.checkbox:checked:after {
 @media screen and (max-width: 1024px){
 	body{
 		overflow-x: hidden;
+		min-height: 100%;
 	}
 
 	.logo a:link{
@@ -1157,7 +1160,7 @@ input.checkbox:checked:after {
 	}
 
 	.banner{
-		height: auto;
+		min-height: 100vh;
 	}
 
 	.agileits-top {

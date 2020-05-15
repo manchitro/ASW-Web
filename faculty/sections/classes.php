@@ -20,6 +20,8 @@ else{
 	header("Location: ../login.php?error=nosession");
 	exit();
 }
+
+include 'values.php';
 ?>
 
 <!DOCTYPE html>
@@ -47,10 +49,10 @@ else{
 				echo '</form>';
 				?>
 			</div>
-			<div class="main-container-table">
+			<div class="main-container">
 				<?php
 				require '../../includes/dbh.inc.php';
-				$sql = "SELECT * FROM classes where sectionId = ?;";
+				$sql = "SELECT * FROM classes where sectionId = ? ORDER BY ClassDate;";
 				$stmt = mysqli_stmt_init($conn);
 				if (!mysqli_stmt_prepare($stmt, $sql)) {
 					echo '<p class="error-msg">Error retrieving data</p>';
@@ -64,7 +66,30 @@ else{
 						echo "<p>No classes found. Add a class using the button above.</p>";
 					}
 					else{
-						
+						while (mysqli_stmt_fetch($stmt)) {
+							echo '<div class="class-box">';
+								echo '<p class="class-name">'.$sectionName.' - '.$classtype[$classType].'</p>';
+								echo '<div class="class-times">';
+									echo '<p class="class-time">'.'on '.date("M d", strtotime($classDate)).'</p>';
+									echo '<p class="class-time">from '.$classtime[$classStartTimeId].' to '.$classtime[$classEndTimeId].' at '.$classRoomNo.'</p>';
+									echo '<div class="class-menu">';
+									echo '<form method="post" action="classattendance.php">';
+										echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
+										echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
+										echo '<input type="hidden" name="classId" value="'.$classId.'" />';
+										echo '<input type="submit" class="students" value="Attendances">';
+									echo '</form>';
+									echo '<form method="post" action="editclass.php">';
+										echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
+										echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
+										echo '<input type="hidden" name="classId" value="'.$classId.'" />';
+										echo '<input type="submit" class="classes" value="Edit">';
+									echo '</form>';
+								echo '</div>';
+								echo '</div>';
+								
+							echo '</div>';
+						}
 					}
 				}
 				?>

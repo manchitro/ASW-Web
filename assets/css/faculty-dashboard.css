@@ -285,6 +285,67 @@ nav #active a:hover{
 	background-color: rgb(36,36,36);
 }
 
+.class-box{
+	border: 1px rgb(64,189,248) solid;
+	width: 350px;
+	height: 160px;
+	float: left;
+	padding: 20px;
+	margin: 10px 30px 10px 10px;
+}
+
+.class-box input{
+	padding: 5px;
+	background-color: rgb(48,48,48);
+	border: 1px rgb(64,189,248) solid;
+	color: rgb(217,217,217);
+	cursor: pointer;
+	margin-top: 15px;
+	margin-right: 10px;
+	width: 150px;
+	height: 40px;
+	font-size: 120%;
+}
+
+.class-box button:hover{
+	background-color: rgb(69,69,69);
+}
+
+.students{
+	margin-right: 15px;
+}
+
+.class-name{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.class-name:hover {
+	text-overflow: clip;
+	white-space: normal;
+	word-break: break-all;
+}
+
+.class-times{
+	font-style: italic;
+	font-size: 80%;
+	margin-top: 10px;
+	line-height: 150%;
+}
+
+.class-menu{
+	display: inline-flex;
+}
+
+.class-menu input:hover{
+	background-color: rgb(69,69,69);
+}
+
+.class-menu input:active{
+	background-color: rgb(36,36,36);
+}
+
 .section-name-div{
 	font-size: 120%;
 	margin: 20px 20px;

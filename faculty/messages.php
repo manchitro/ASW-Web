@@ -20,3 +20,12 @@ if(isset($_GET['success']) && $_GET['success'] == "added"){
 if(isset($_GET['success']) && $_GET['success'] == "removedstudents"){
 	echo '<p class="message">Selected students were removed from section</p>';
 }
+if(isset($_GET['success']) && $_GET['success'] == "classcreated"){
+	echo '<p class="message">Class created on '.$_GET['date'].'</p>';
+}
+if(isset($_GET['success']) && $_GET['success'] == "classedited"){
+	echo '<p class="message">Class edited</p>';
+}
+if(isset($_GET['success']) && $_GET['success'] == "classdeleted"){
+	echo '<p class="message">Class deleted</p>';
+}
