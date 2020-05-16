@@ -49,7 +49,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 							mysqli_stmt_bind_result($stmt2, $stu_id, $stu_academicId, $stu_firstname, $stu_lastname, $stu_email, $stu_pass, $stu_userType, $stu_createdAt);
 
 							while (mysqli_stmt_fetch($stmt2)){
-								$sql3 = "INSERT INTO attendances (StudentId, ClassId, Entry, CreatedAt) VALUES (?, ?, ?, current_timestamp());";
+								$sql3 = "INSERT INTO attendances (StudentId, ClassId, CreatedAt) VALUES (?, ?, current_timestamp());";
 								$stmt3 = mysqli_stmt_init($conn);
 								if (!mysqli_stmt_prepare($stmt3, $sql3)) {
 									$_SESSION['sectionId'] = $sectionId;
@@ -58,8 +58,8 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 									exit();
 								}
 								else{
-									$entry = "0";
-									mysqli_stmt_bind_param($stmt3, "sss", $stu_id, $lastInsertId, $entry);
+									//$entry = "0";
+									mysqli_stmt_bind_param($stmt3, "ss", $stu_id, $lastInsertId);
 									mysqli_stmt_execute($stmt3);
 								}
 								echo mysqli_stmt_error($stmt).mysqli_stmt_error($stmt2).mysqli_stmt_error($stmt3);

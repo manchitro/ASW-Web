@@ -6,15 +6,15 @@
 
 	</div>
 	<nav>
-		<div class="nav-bars" id="active">
+		<div class="nav-bars" <?php if(strpos($_SERVER['PHP_SELF'], "sections")) echo 'id="active"';?>>
 			<img src="../../images/sections.png">
-			<a href="sections.php">Sections</a>
+			<a href="../sections/sections.php">Sections</a>
 		</div>
-		<div class="nav-bars">
+		<div class="nav-bars" <?php if(strpos($_SERVER['PHP_SELF'], "search")) echo 'id="active"';?>>
 			<img src="../../images/search.png">
 			<a href="../search/search.php">Search</a>
 		</div>
-		<div class="nav-bars">
+		<div class="nav-bars" <?php if(strpos($_SERVER['PHP_SELF'], "profile")) echo 'id="active"';?>>
 			<img src="../../images/login.png">
 			<a href="../profile/profile.php">Profile</a>
 		</div>

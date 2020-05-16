@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
+	unset($_SESSION['classId']);
 	if(isset($_POST['sectionId']) && $_POST['sectionId'] !== ""){
 		$sectionId = $_POST['sectionId'];
 		$sectionName = $_POST['sectionName'];
@@ -27,7 +28,7 @@ include 'values.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Faculty - Classes</title>
+	<title>Classes</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">

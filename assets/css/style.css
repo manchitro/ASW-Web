@@ -26,7 +26,7 @@ nav{
 	justify-content: space-around;
 	align-items: center;
 	min-height: 10vh;
-	font-family: 'Spartan', sans-serif;
+	font-family: 'Spartan', Arial, sans-serif;
 	font-size: 100%;
 	border-bottom: 5px rgb(64, 189, 214) solid;
 }
@@ -1230,4 +1230,3 @@ input.checkbox:checked:after {
 .toggle .line3{
 	transform: rotate(45deg) translate(-5px,-6px);
 }
-

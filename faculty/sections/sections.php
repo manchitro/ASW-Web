@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 	unset($_SESSION['sectionId']);
 	unset($_SESSION['sectionName']);
+	unset($_SESSION['classId']);
 }
 else{
 	header("Location: ../../login.php?error=nosession");
@@ -15,11 +16,11 @@ include 'values.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Faculty - Sections</title>
+	<title>Sections</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">
-	<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+	
 	<link rel="icon" href="../../favicon.png">
 </head>
 <body>
@@ -75,25 +76,25 @@ include 'values.php';
 									if(mysqli_stmt_num_rows($stmt2) == 1){
 										echo '<p>2nd class of week not available/applicable</p>';
 									}
-									echo '<div class="section-menu">';
-									echo '<form method="post" action="students.php">';
-									echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
-									echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
-									echo '<input type="submit" class="students" value="Students">';
-									echo '</form>';
-									echo '<form method="post" action="classes.php">';
-									echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
-									echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
-									echo '<input type="submit" class="classes" value="Classes">';
-									echo '</form>';
-									echo '<form method="post" action="editsection.php">';
-									echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
-									echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
-									echo '<input type="submit" class="edit" value="Edit">';
-									echo '</form>';
-									echo '</div>';
 									echo '</div>';
 								}
+								echo '<div class="section-menu">';
+								echo '<form method="post" action="students.php">';
+								echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
+								echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
+								echo '<input type="submit" class="students" value="Students">';
+								echo '</form>';
+								echo '<form method="post" action="classes.php">';
+								echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
+								echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
+								echo '<input type="submit" class="classes" value="Classes">';
+								echo '</form>';
+								echo '<form method="post" action="editsection.php">';
+								echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
+								echo '<input type="hidden" name="sectionName" value="'.$sectionName.'" />';
+								echo '<input type="submit" class="edit" value="Edit">';
+								echo '</form>';
+								echo '</div>';
 							}
 							echo '</div>';
 						}

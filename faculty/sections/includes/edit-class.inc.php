@@ -25,9 +25,8 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 						$_SESSION['sectionId'] = $sectionId;
 						$_SESSION['sectionName'] = $sectionName;
 						$_SESSION['classId'] = $classId;
-						//header("Location: ../editclass.php?error=sqlerror");
-						echo mysqli_error($conn);
-						//exit();
+						header("Location: ../editclass.php?error=sqlerror");
+						exit();
 					}
 					else{
 						mysqli_stmt_bind_param($stmt, "ssssss", $classDate, $ct, $st, $et, $room, $classId);

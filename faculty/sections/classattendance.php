@@ -1,15 +1,15 @@
 <?php
 session_start();
 if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
-	if(isset($_POST['sectionId']) && $_POST['sectionId'] !== ""){
+	if(isset($_POST['sectionId']) && $_POST['sectionId'] !== "" && isset($_POST['classId']) && $_POST['classId'] !== ""){
 		$sectionId = $_POST['sectionId'];
 		$sectionName = $_POST['sectionName'];
+		$classId = $_POST['classId'];
 	}
-	else if(isset($_SESSION['sectionId']) && $_SESSION['sectionId'] !== ""){
-		$sectionId = $_SESSION['sectionId'];
-		$sectionName = $_SESSION['sectionName'];
-		$_POST['sectionId'] = $sectionId;
-		$_POST['sectionName'] = $sectionName;
+	else if (isset($_SESSION['sectionId']) && isset($_SESSION['classId'])){
+		$sectionId = $_POST['sectionId'] = $_SESSION['sectionId'];
+		$sectionName = $_POST['sectionName'] = $_SESSION['sectionName'];
+		$classId = $_POST['classId'] = $_SESSION['classId'];
 	}
 	else{
 		header("Location: sections.php");
@@ -25,7 +25,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Students</title>
+	<title>Class Attendance</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">
@@ -39,7 +39,7 @@ else{
 		<div class="right-panel">
 			<div class="page-title">
 				<a href="sections.php"><button class="back-button"><img src="../../images/back.png"></button></a>
-				<p>Student list of <?php echo $_POST['sectionName']?></p>
+				<p>Signle class attendance list of <?php echo $_POST['sectionName']?></p>
 				<?php
 				echo '<form method="post" action="addstudent.php">';
 				echo '<input type="hidden" name="sectionId" value="'.$sectionId.'" />';
@@ -59,13 +59,13 @@ else{
 					$index = 1;
 					require '../../includes/dbh.inc.php';
 
-					$sql2 = "SELECT * FROM classes where SectionId = ? ORDER BY classDate;";
+					$sql2 = "SELECT * FROM classes where Id = ?;";
 					$stmt2 = mysqli_stmt_init($conn);
 					if (!mysqli_stmt_prepare($stmt2, $sql2)) {
 						echo '<p class="error-msg">Error retrieving data</p>';
 					}
 					else{
-						mysqli_stmt_bind_param($stmt2, "s", $sectionId);
+						mysqli_stmt_bind_param($stmt2, "s", $classId);
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_store_result($stmt2);
 						mysqli_stmt_bind_result($stmt2, $class_id, $class_sectionId, $class_date, $class_type, $class_startTimeId, $class_endTimeId, $class_roomNo, $class_QRCode, $class_QRCodeDisplayStartTIme, $class_QRCodeDisplayEndTIme, $class_createdAt);
@@ -95,13 +95,13 @@ else{
 						//for each student
 						//echo $stu_id.' '.$stu_academicId.' '.$stu_firstname.' '.$stu_lastname.' '.$stu_email.' '.$stu_pass.' '.$stu_userType.' '.$stu_createdAt.'<br>';
 
-							$sql2 = "SELECT * FROM classes where SectionId = ?;";
+							$sql2 = "SELECT * FROM classes where Id = ?;";
 							$stmt2 = mysqli_stmt_init($conn);
 							if (!mysqli_stmt_prepare($stmt2, $sql2)) {
 								echo '<p class="error-msg">Error retrieving data</p>';
 							}
 							else{
-								mysqli_stmt_bind_param($stmt2, "s", $sectionId);
+								mysqli_stmt_bind_param($stmt2, "s", $classId);
 								mysqli_stmt_execute($stmt2);
 								mysqli_stmt_store_result($stmt2);
 								mysqli_stmt_bind_result($stmt2, $class_id, $class_sectionId, $class_date, $class_type, $class_startTimeId, $class_endTimeId, $class_roomNo, $class_QRCode, $class_QRCodeDisplayStartTIme, $class_QRCodeDisplayEndTIme, $class_createdAt);

@@ -55,7 +55,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 								mysqli_stmt_store_result($stmt3);
 								mysqli_stmt_bind_result($stmt3, $classId, $classSectionId, $classDate, $classType, $classStartTimeId, $classEndTimeId, $classRoomNo, $classQRCode, $classQRDisplayStartTime, $classQRDisplayEndTime, $classCreatedAt);
 								while (mysqli_stmt_fetch($stmt3)){
-									$sql4 = "INSERT INTO attendances (StudentId, ClassId, Entry, CreatedAt) VALUES (?, ?, ?, current_timestamp());";
+									$sql4 = "INSERT INTO attendances (StudentId, ClassId, CreatedAt) VALUES (?, ?, current_timestamp());";
 									$stmt4 = mysqli_stmt_init($conn);
 									if (!mysqli_stmt_prepare($stmt4, $sql4)) {
 										$_SESSION['sectionId'] = $sectionId;
@@ -64,8 +64,8 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 										exit();
 									}
 									else{
-										$entry = "0";
-										mysqli_stmt_bind_param($stmt4, "sss", $lastInsertId, $classId, $entry);
+										//$entry = "0";
+										mysqli_stmt_bind_param($stmt4, "ss", $lastInsertId, $classId);
 										mysqli_stmt_execute($stmt4);
 									}
 								}
@@ -125,7 +125,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 								mysqli_stmt_store_result($stmt3);
 								mysqli_stmt_bind_result($stmt3, $classId, $classSectionId, $classDate, $classType, $classStartTimeId, $classEndTimeId, $classRoomNo, $classQRCode, $classQRDisplayStartTime, $classQRDisplayEndTime, $classCreatedAt);
 								while (mysqli_stmt_fetch($stmt3)){
-									$sql4 = "INSERT INTO attendances (StudentId, ClassId, Entry, CreatedAt) VALUES (?, ?, ?, current_timestamp());";
+									$sql4 = "INSERT INTO attendances (StudentId, ClassId, CreatedAt) VALUES (?, ?, current_timestamp());";
 									$stmt4 = mysqli_stmt_init($conn);
 									if (!mysqli_stmt_prepare($stmt4, $sql4)) {
 										$_SESSION['sectionId'] = $sectionId;
@@ -134,14 +134,14 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 										exit();
 									}
 									else{
-										$entry = "0";
-										mysqli_stmt_bind_param($stmt4, "sss", $lastInsertId, $classId, $entry);
+										//$entry = "0";
+										mysqli_stmt_bind_param($stmt4, "ss", $lastInsertId, $classId);
 										mysqli_stmt_execute($stmt4);
 									}
 								}
 								$_SESSION['sectionId'] = $sectionId;
 								$_SESSION['sectionName'] = $sectionName;
-								header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname."&existing=Existing%20Student%20");
+								header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname."&existing=New%20Student%20");
 								exit();
 							}
 						}

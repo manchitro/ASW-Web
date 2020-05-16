@@ -22,7 +22,23 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 			mysqli_stmt_store_result($stmt2);
 			mysqli_stmt_bind_result($stmt2, $sectionTimeId, $startTimeId, $endTimeId, $weekDayId, $classType, $room, $sectionId, $createdAt);
 			if(mysqli_stmt_num_rows($stmt2) == 0){
-				echo "<p>Error: No section time found</p>";
+				$time1id = -1;
+				$st1 = 0;
+				$et1 = 0;
+				$wt1 = 0;
+				$ct1 = 0;
+				$room1 = "";
+
+				$time2id = -1;
+				$st2 = 0;
+				$et2 = 0;
+				$wt2 = 0;
+				$ct2 = 0;
+				$room2 = "";
+
+				$oneClass = true;
+
+				$noSecTimeFound = true;
 			}
 			else{
 				//record section time 1
@@ -86,7 +102,7 @@ include 'values.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Faculty - Edit Section</title>
+	<title>Edit Section</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/faculty-dashboard.css">
@@ -125,6 +141,9 @@ include 'values.php';
 								}
 								if ($_GET['error'] == 'sqlerror') {
 									echo "<p>Your request could not be processed!</p>";
+								}
+								if($noSecTimeFound == true){
+									echo "<p>No section times were found!</p>";
 								}
 							}
 							?>
@@ -300,8 +319,8 @@ include 'values.php';
 				</form>
 				<div class="button-delete">
 					<form method="post" action="includes/delete-section.inc.php" id="deleteForm" onsubmit="return confirm('Are your sure you want to delete this section? All attendance and student data will be deleted pemanently!')">
-						<input type="hidden" name="section-id" value="<?php echo $sectionId;?>">
-						<input type="hidden" name="section-name" value="<?php echo $sectionName;?>">
+						<input type="hidden" name="sectionId" value="<?php echo $sectionId;?>">
+						<input type="hidden" name="sectionName" value="<?php echo $sectionName;?>">
 						<input type="submit" name="submit" value="Delete"/>
 					</form>
 				</div>
