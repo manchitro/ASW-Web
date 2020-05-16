@@ -679,14 +679,21 @@ nav #active a:hover{
 	color: rgb(217,217,217);
 	font-size: 95%;
 	padding-left: 10px;
+	margin-left: 20px;
 }
 
 .pass-change-form{
 	padding-left: 10px;
 }
 
+.pass-table td{
+	height: 40px;
+	font-size: 110%;
+}
+
 .value p{
 	padding-left: 10px;
+	margin-left: 20px;
 }
 
 .key{
@@ -717,4 +724,50 @@ nav #active a:hover{
 	background-color: rgb(64,189,243);
 	border: 0px solid;
 	color: rgb(48,48,48);
+}
+
+.pass-table input{
+	padding: 5px 10px;
+	background-color: rgb(48,48,48);
+	border: 1px solid rgb(64,189,243);
+	color: rgb(64,189,243);
+	width: 80px;
+	height: 30px;
+	font-size: 90%;
+	margin-right: 1px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.pass-change-form input[type="password"]{
+	height: 30px;
+	width: 300px;
+	background-color: rgb(39,39,39);
+	border: none;
+	color: rgb(217,217,217);
+	font-size: 95%;
+	padding-left: 10px;
+	margin-left: 20px;
+}
+
+.pass-change-title{
+	margin: 20px 10px;
+	font-size: 120%;
+	border-bottom: 1px solid rgb(217,217,217);
+	padding-bottom: 10px;
+	width: 470px;
+}
+
+.change-pass-link a{
+	padding: 5px 10px;
+	background-color: rgb(48,48,48);
+	border: 1px solid rgb(64,189,243);
+	color: rgb(64,189,243);
+	width: 80px;
+	height: 30px;
+	font-size: 100%;
+	margin-right: 1px;
+	margin-top: 30px;
+	cursor: pointer;
+	text-decoration: none;
 }

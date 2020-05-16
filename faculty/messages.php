@@ -29,3 +29,9 @@ if(isset($_GET['success']) && $_GET['success'] == "classedited"){
 if(isset($_GET['success']) && $_GET['success'] == "classdeleted"){
 	echo '<p class="message">Class deleted</p>';
 }
+if(isset($_GET['success']) && $_GET['success'] == "profupdated"){
+	echo '<p class="message">Profile successfully updated</p>';
+}
+if(isset($_GET['success']) && $_GET['success'] == "passchanged"){
+	echo '<p class="message">Password successfully updated</p>';
+}
