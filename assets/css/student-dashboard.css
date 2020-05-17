@@ -97,3 +97,108 @@ header{
 #history-div button:hover{
 	background-color: rgb(69,69,69);
 }
+
+#profile-div button{
+	max-width: 400px;
+	width: 70vw;
+	height: 100px;
+	margin-top: 20px;
+	font-family: Arial, sans-serif;
+	font-size: 120%;
+	background-color: rgb(48,48,48);
+	border: rgb(64,189,214) 2px solid;
+	color: rgb(217,217,217);
+	cursor: pointer;
+}
+
+#profile-div button:hover{
+	background-color: rgb(69,69,69);
+}
+
+.back-button button{
+	padding: 7px 10px;
+	color: rgb(69,69,69);
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	background-color: rgb(64,189,214);
+	border: rgb(69,69,69) 2px solid;
+	cursor: pointer;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.back-button button:hover{
+	background-color: rgb(44,169,194);
+}
+
+.page-title{
+	text-align: center;
+	color: rgb(217,217,217);
+	height: 50px;
+	border-bottom: 2px solid rgb(64,189,214);
+	display: inline-flex;
+	align-items: center;
+}
+
+.page-title p{
+	padding: 20px 20px;
+	font-size: 150%;
+}
+
+.profile-div{
+	padding-left: 20px;
+	padding-top: 20px;
+	color: rgb(217,217,217);
+	text-align: left;
+}
+
+.profile-table td{
+	height: 40px;
+	font-size: 110%;
+}
+
+.profile-div input[type="text"]{
+	height: 30px;
+	width: 300px;
+	background-color: rgb(39,39,39);
+	border: none;
+	color: rgb(217,217,217);
+	font-size: 95%;
+	padding-left: 10px;
+	margin-left: 20px;
+}
+
+.value p{
+	padding-left: 10px;
+	margin-left: 20px;
+}
+
+.key{
+	width: 150px;
+}
+
+.value{
+	width: 300px;
+}
+
+.submit-button{
+	text-align: right;
+}
+
+.submit-button input{
+	padding: 5px 10px;
+	background-color: rgb(48,48,48);
+	border: 1px solid rgb(64,189,243);
+	color: rgb(64,189,243);
+	width: 80px;
+	height: 30px;
+	font-size: 90%;
+	margin-right: 1px;
+	cursor: pointer;
+}
+
+.submit-button input:hover{
+	background-color: rgb(64,189,243);
+	border: 0px solid;
+	color: rgb(48,48,48);
+}

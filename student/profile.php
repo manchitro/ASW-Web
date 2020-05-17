@@ -19,7 +19,7 @@ else{
 <body>
 	<header>
 		<div class="back-button">
-			<a href="dashboard.php"><img src="../images/back.png"></a>
+			<a href="dashboard.php"><button name="back">Back</button></a>
 		</div>
 		<div id="message">
 			<?php echo'<p id="name">Welcome '.$_SESSION['userFullName'].'</p>'?>
@@ -34,7 +34,34 @@ else{
 			<p>Profile</p>
 		</div>
 		<div class="profile-div">
-			
+			<form action="includes/edit-profile.inc.php" method="post">
+			<table class="profile-table">
+			<?php
+			require '../includes/dbh.inc.php';
+			$sql ="SELECT AcademicId, FirstName, LastName, Email FROM users WHERE AcademicId=?";
+			$stmt = mysqli_stmt_init($conn);
+
+			if (!mysqli_stmt_prepare($stmt, $sql)) {
+				echo "Could not retrieve data";
+			}
+			else{
+				mysqli_stmt_bind_param($stmt, "s", $_SESSION['userAcademicId']);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+				mysqli_stmt_bind_result($stmt, $user_academicId, $user_firstName, $user_lastName, $user_email);
+				if(mysqli_stmt_fetch($stmt)){
+					echo '<tr><td class="key">Academic Id: </td><td class="value"><p>'.$user_academicId.'</p></td></tr>';
+					echo '<tr><td class="key">First Name: </td><td class="value"><input type="text" name="firstName" value="'.$user_firstName.'"></td></tr>';
+					echo '<tr><td class="key">Last Name: </td><td class="value"><input type="text" name="lastName" value="'.$user_lastName.'"></td></tr>';
+					echo '<tr><td></td><td class="submit-button"><input type="submit" name="submit" value="Save"></td></tr>';
+				}
+				else{
+					echo '<p>You currently do not exist in the ASW database. When a faculty puts you in a section, your entry will be automatically created.</p>';
+				}
+			}
+			?>
+			</table>
+		</form>
 		</div>
 	</div>
 </body>

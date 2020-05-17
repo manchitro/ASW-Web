@@ -19,7 +19,7 @@ else{
 <body>
 	<header>
 		<div class="back-button">
-			<a href="dashboard.php"><img src="../images/back.png"></a>
+			<a href="dashboard.php"><button name="back">Back</button></a>
 		</div>
 		<div id="message">
 			<?php echo'<p id="name">Welcome '.$_SESSION['userFullName'].'</p>'?>
