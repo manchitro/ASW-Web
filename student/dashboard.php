@@ -12,7 +12,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student - Dashboard</title>
+	<title>Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/student-dashboard.css">
 	<link rel="icon" href="../favicon.png">
 </head>
@@ -32,6 +32,9 @@ else{
 		</div>
 		<div id="history-div">
 			<a href="history.php"><button name="history">History</button></a>
+		</div>
+		<div id="profile-div">
+			<a href="profile.php"><button name="history">Profile</button></a>
 		</div>
 	</div>
 </body>

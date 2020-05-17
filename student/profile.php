@@ -12,7 +12,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Scan</title>
+	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/student-dashboard.css">
 	<link rel="icon" href="../favicon.png">
 </head>
@@ -31,7 +31,10 @@ else{
 	</header>
 	<div id="main">
 		<div class="page-title">
-			<p>Scan</p>
+			<p>Profile</p>
+		</div>
+		<div class="profile-div">
+			
 		</div>
 	</div>
 </body>

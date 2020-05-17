@@ -12,7 +12,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Scan</title>
+	<title>History</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/student-dashboard.css">
 	<link rel="icon" href="../favicon.png">
 </head>
@@ -31,7 +31,15 @@ else{
 	</header>
 	<div id="main">
 		<div class="page-title">
-			<p>Scan</p>
+			<p>History</p>
+		</div>
+		<div class="history-div">
+			<div class="historybox">
+				<p class="sectionName">WEB TECH [A]</p>
+				<p class="class-date">May 15</p>
+				<p class="class-type">Theory</p>
+				<p class="scanTime">Scan time: 2020-05-15 08:06:43</p>
+			</div>
 		</div>
 	</div>
 </body>
