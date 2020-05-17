@@ -25,7 +25,7 @@ else{
 		<?php include '../navigation.php'?>
 		<div class="right-panel">
 			<div class="page-title">
-				<a href="sections.php"><button class="back-button"><img src="../../images/back.png"></button></a>
+				
 				<input type="text" name="search" id="searchBox" placeholder="Search for students by ID or Name" required="">
 				<button class="search-button" id="searchButton"><img src="../../images/search.png"></button>
 				<input type="hidden" name="facultyId" id="facultyId" value='<?php echo $_SESSION["userId"]?>'>

@@ -65,7 +65,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 									}
 									else{
 										//$entry = "0";
-										mysqli_stmt_bind_param($stmt4, "ss", $lastInsertId, $classId);
+										mysqli_stmt_bind_param($stmt4, "ss", $foundId, $classId);
 										mysqli_stmt_execute($stmt4);
 									}
 								}
@@ -141,7 +141,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 								}
 								$_SESSION['sectionId'] = $sectionId;
 								$_SESSION['sectionName'] = $sectionName;
-								header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname."&existing=New%20Student%20");
+								header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$firstName." ".$lastName."&existing=New%20Student%20");
 								exit();
 							}
 						}

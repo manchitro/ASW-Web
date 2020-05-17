@@ -83,6 +83,7 @@ header{
 	min-width: 250px;
 	background-color: rgb(59,59,59);
 	border-top: 1px rgb(217,217,217) solid;
+	border-bottom: 1px rgb(217,217,217) solid;
 	height: 6vh;
 	text-align: center;
 	display: flex;
@@ -97,6 +98,57 @@ header{
 	width: 20vw;
 	min-width: 250px;
 	background-color: rgb(31,31,31);
+	color: rgb(217,217,217);
+	overflow-y: auto;
+}
+
+.todays-classes img{
+	height: 30px;
+
+}
+
+.qr-td{
+	text-align: right;
+}
+
+.no-class{
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+.today-class-box{
+	background-color: rgb(38,38,38);
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 90%;
+}
+
+.today-class-table{
+	width: 100%;
+}
+
+.today-class-table{
+	padding-right: 10px;
+}
+
+.today-class-box-even{
+	background-color: rgb(59,59,59);
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 90%;
+}
+
+.qr-button{
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.class-room{
+	padding-left: 10px;
+	text-align: right;
 }
 
 nav{
@@ -793,4 +845,21 @@ nav #active a:hover{
 
 .search-button img{
 	height: 30px;
+}
+
+#qrcode{
+	display: none;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	top: 50%;
+	left: 50%;
+	margin-top: -50vh;
+	margin-left: -25vw;
+	margin-right: -25vw;
+	color: rgb(217,217,217);
+}
+
+#qrcode img{
+	height: 100vh;
 }

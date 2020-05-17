@@ -1,10 +1,5 @@
 <div class="left-panel">
-	<div class="today-title">
-		<p class="todays-label">Today's classes</p>
-	</div>
-	<div class="todays-classes">
-
-	</div>
+	<?php include 'todaysclasses.php'?>
 	<nav>
 		<div class="nav-bars" <?php if(strpos($_SERVER['PHP_SELF'], "sections")) echo 'id="active"';?>>
 			<img src="../../images/sections.png">

@@ -65,7 +65,7 @@ else{
 					</form>
 					<form action="importspreadsheet.php" method="post">
 						<div class="import-spreadsheet-title">
-							<p>Import Spreadsheet</p>
+							<p>Import Spreadsheet (Experimental)</p>
 						</div>
 						<div class="import-spreadsheet-main">
 							<p>Disclaimer: Spreadsheet import is an experimental feature. Please read the instructions first.</p>

@@ -28,10 +28,10 @@ else{
 	</header>
 	<div id="main">
 		<div id="scan-div">
-			<button name="scan">Scan</button>
+			<a href="scan.php"><button name="scan">Scan</button></a>
 		</div>
 		<div id="history-div">
-			<button name="history">History</button>
+			<a href="history.php"><button name="history">History</button></a>
 		</div>
 	</div>
 </body>

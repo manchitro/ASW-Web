@@ -22,7 +22,7 @@ else{
 	exit();
 }
 
-include 'values.php';
+include '../values.php';
 ?>
 
 <!DOCTYPE html>
