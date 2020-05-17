@@ -771,3 +771,26 @@ nav #active a:hover{
 	cursor: pointer;
 	text-decoration: none;
 }
+
+#searchBox{
+	font-size: 130%;
+	margin: 15px 20px;
+	height: 40px;
+	width: 50vw;
+	background-color: rgb(39,39,39);
+	border: none;
+	color: rgb(217,217,217);
+	padding-left: 20px;
+}
+
+.search-button{
+	background-color: rgb(48,48,48);
+	border: none;
+	cursor: pointer;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.search-button img{
+	height: 30px;
+}
