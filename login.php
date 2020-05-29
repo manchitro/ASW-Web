@@ -25,7 +25,7 @@ background-position: center center;
 background-attachment: fixed;">
 <?php include 'header.php';?>
 
-<div class="banner">
+<div class="banner-login">
 	<h1 id="title">Login</h1>
 	<p>(Students login with VUES credentials)</p>
 	<div class="divider-banner"></div>

@@ -2,6 +2,8 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
 }
 
 html{
@@ -18,10 +20,11 @@ body{
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+	font-weight: normal;
 }
 
 nav{
-	background-color: rgba(69,69,69,0.8);
+	background-color: rgb(69,69,69);
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -31,57 +34,102 @@ nav{
 	border-bottom: 5px rgb(64, 189, 214) solid;
 }
 
+nav ul{
+	float: right;
+	margin-right: 20px;
+}
+
+nav ul li{
+	display: inline-block;
+	margin: 0 20px;
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+nav ul li a{
+	color: rgb(217,217,217);
+	padding: 7px 13px;
+	border-radius: 3px;
+}
+
+a#active{
+	color: rgb(64,189,214) !important;
+}
+
+a.nav-links:hover{
+	background: rgb(150,150,150);
+	transition: 0.5s;	
+}
+
 .logo a{
 	letter-spacing: 2px;
 	white-space: nowrap;
+	padding: 7px 13px;
+	font-size: 130%;
+	border-radius: 3px;
 }
 
-.logo a:link, a:visited{
+/*minimized nav*/
+
+.checkbtn{
+	font-size: 30px;
 	color: rgb(217,217,217);
-	font-size: 20px;
-	text-decoration: none;
-}
-
-.logo a:hover, a:active{
-	color: rgb(100,100,100);
-
-}
-
-.nav-links{
-	display: flex;
-	color: rgb(217,217,217);
-	text-decoration: none;
-	justify-content: space-around;
-	width: 40%;
-}
-
-.nav-links li{
-	list-style: none;
-}
-
-.nav-links a{
-	text-decoration: none;
-	color: rgb(217,217,217);
-	font-weight: bold;
-	letter-spacing: 2px;
-	font-size: 14px;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-.nav-links a:hover{
-	color: rgb(100,100,100);
-}
-
-.burger{
+	float: right;
+	margin-right: 40px;
+	cursor: pointer;
 	display: none;
 }
-.burger div{
-	background-color: rgb(217,217,217);
-	height: 3px;
-	width: 25px;
-	margin: 5px;
-	transition: all 0.3s ease;
+
+#check{
+	display: none;
+}
+
+@media(max-width: 952px){
+	.logo a{
+		font-size: 100%;
+	}
+
+	nav ul li a{
+		font-size: 16px;
+	}
+
+
+}
+
+@media(max-width: 858px){
+	.checkbtn{
+		display: block;
+	}
+
+	.navigation{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: rgba(69,69,69);
+		top: 10vh;
+		left: -100%;
+		text-align: center;
+		transition: all 0.5s;
+	}
+
+	nav{
+		background-color: rgba(69,69,69);
+	}
+
+	nav ul li{
+		display: block;
+		padding: 30px 0;
+		border-bottom: 1px solid rgb(217,217,217)
+	}
+
+	nav ul li a{
+		font-size: 30px;
+	}
+
+	#check:checked ~ ul{
+		left: 0;
+	}
 }
 
 .banner{
@@ -90,7 +138,7 @@ nav{
 	width: 70%;
 	margin: auto;
 	text-align: center;
-	height: auto;
+	height: 80vh;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -103,28 +151,55 @@ nav{
 .banner-signup{
 	font-family: 'Spartan', sans-serif;
 	color: rgb(217,217,217);
-	width: 70%;
+	width: 90%;
+	max-width: 500px;
 	margin: auto;
 	text-align: center;
 	height: auto;
+	display: inline-block;
+	justify-content: center;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.banner-login{
+	font-family: 'Spartan', sans-serif;
+	color: rgb(217,217,217);
+	width: 90%;
+	max-width: 500px;
+	margin: auto;
+	text-align: center;
+	height: 80vh;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	overflow: hidden;
 }
 
+.banner-login p{
+	margin-bottom: 10px;
+}
+
 #title{
 	font-size: 35px;
-	margin-top: 50px;
 	padding-bottom: 10px;
 	letter-spacing: 0px;
 	font-weight: bold;
+	padding-top: 20px;
 }
 
 #subtitle{
 	font-size: 17px;
 	font-weight: bold;
-	margin-bottom: 10px;
+}
+
+#subtitle a{
+	color: rgb(217,217,217);
+	font-size: 150%;
+}
+
+#login-link:visited{
+	color: rgb(217,217,217);
 }
 
 .downloads{
@@ -165,6 +240,10 @@ nav{
 	font-size: 13px;
 	font-weight: bold;
 	white-space: pre-wrap;
+}
+
+.steps a:visited, a:link{
+	color: rgb(217,217,217);
 }
 
 .step-list{
@@ -445,7 +524,7 @@ footer ul img{
 
 .agileits-top {
 	padding: 0em;
-	width: 50%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 2em;
@@ -1091,116 +1170,9 @@ input.checkbox:checked:after {
 	}
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 918px){
 	body{
-		overflow-x: hidden;
-		min-height: 100%;
-	}
-
-	.logo a:link{
-		font-size: 15px;
-	}
-
-	.nav-links{
-		position: absolute;
-		right: 0px;
-		height: 80vh;
-		background-color: rgba(69,69,69,0.8);
-		top: 10vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 30%;
-		transform: translateX(100%);
-		transition: transform 0.3s ease-in;
-	}
-
-	.nav-links li{
-		opacity: 0;
-	}
-
-	.burger{
-		display: block;
-		cursor: pointer;
-	}
-
-	.burger:hover{
-		background-color: rgb(100,100,100);
-	}
-
-	.dev-sazid{
-		margin-top: 20px;
-		padding: 20px;
-		border: 2px solid rgb(217,217,217);
-		float: left;
-		font-size: 80%;
-		width: 90%;
-		overflow: hidden;
-	}
-
-	.dev-asir{
-		margin-top: 20px;
-		margin-right: 30px;
-		padding: 20px;
-		border: 2px solid rgb(217,217,217);
-		float: left;
-		font-size: 80%;
-		width: 90%;
-		overflow: hidden;
-	}
-
-	.dev-pial{
-		margin-top: 20px;
-		padding: 20px;
-		border: 2px solid rgb(217,217,217);
-		float: left;
-		font-size: 80%;
-		width: 90%;
-		overflow: hidden;
-	}
-
-	.banner{
-		min-height: 100vh;
-	}
-
-	.agileits-top {
-		padding: 0em;
-		width: 80%;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 2em;
-	}
-
-	.personnel-project{
-		margin-top: 30px;
-		margin-bottom: 30px;
-		text-align: left;
-		width: auto;
-	}
-
-	.personnel-web{
-		margin-top: 30px;
-		margin-bottom: 50px;
-		text-align: left;
-		width: auto;	
-	}
-
-	.banner-signup{
-		font-family: 'Spartan', sans-serif;
-		color: rgb(217,217,217);
-		width: 80%;
-		margin: auto;
-		text-align: center;
-		height: auto;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		overflow: hidden;
-	}
-
-	#footer-login{
-		position: fixed;
-		bottom: 0;
+		overflow: ;
 	}
 }
 

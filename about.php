@@ -17,7 +17,7 @@ $pial = "images/pial.jpg";
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ASW - Home</title>
+	<title>ASW - About</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -31,8 +31,6 @@ background-repeat: no-repeat;
 background-position: center center;
 background-attachment: fixed;">
 <?php include 'header.php';?>
-
-<script src="assets/js/app.js"></script>
 
 <div class="banner-about">
 	<h1 id="title-about">About</h1>

@@ -27,6 +27,9 @@ else{
 		</div>
 	</header>
 	<div id="main">
+		<div class="page-title">
+			<p>Home</p>
+		</div>
 		<div id="scan-div">
 			<a href="scan.php"><button name="scan">Scan</button></a>
 		</div>

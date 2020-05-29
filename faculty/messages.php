@@ -35,3 +35,6 @@ if(isset($_GET['success']) && $_GET['success'] == "profupdated"){
 if(isset($_GET['success']) && $_GET['success'] == "passchanged"){
 	echo '<p class="message">Password successfully updated</p>';
 }
+if(isset($_GET['error']) && $_GET['error'] == "alreadyexists"){
+	echo '<p class="message">'.$_GET['aid'].' '.$_GET['name'].' is already in this section</p>';
+}

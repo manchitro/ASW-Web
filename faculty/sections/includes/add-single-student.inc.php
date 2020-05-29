@@ -31,50 +31,74 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 					if (mysqli_stmt_fetch($stmt)) {
 						$foundId = $stu_id;
 
-						$sql2 = "INSERT INTO sectionstudents (SectionId, StudentId) VALUES (?, ?);";
-						$stmt2 = $stmt = mysqli_stmt_init($conn);
+						$sql1 = "SELECT * FROM SectionStudents WHERE SectionId = ? AND StudentId = ?";
+						$stmt1 = mysqli_stmt_init($conn);
 
-						if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+						if (!mysqli_stmt_prepare($stmt1, $sql1)) {
 							$_SESSION['sectionId'] = $sectionId;
 							$_SESSION['sectionName'] = $sectionName;
-							header("Location: ../addstudent.php?error=sqlerror");
+							header("Location: ../addstudent.php?error=sqlerror".mysqli_error($conn));
 							exit();
 						}
 						else{
-							mysqli_stmt_bind_param($stmt, "ss", $sectionId, $foundId);
-							mysqli_stmt_execute($stmt);
+							mysqli_stmt_bind_param($stmt1, "ss", $sectionId, $foundId);
+							mysqli_stmt_execute($stmt1);
+							mysqli_stmt_store_result($stmt1);
+							if(mysqli_stmt_num_rows($stmt1) == 0){
+								$sql2 = "INSERT INTO sectionstudents (SectionId, StudentId) VALUES (?, ?);";
+								$stmt2 = mysqli_stmt_init($conn);
 
-							$sql3 = "SELECT * FROM classes where sectionId = ?;";
-							$stmt3 = mysqli_stmt_init($conn);
-							if (!mysqli_stmt_prepare($stmt3, $sql3)) {
-								echo '<p class="error-msg">Error retrieving data</p>';
-							}
-							else{
-								mysqli_stmt_bind_param($stmt3, "s", $sectionId);
-								mysqli_stmt_execute($stmt3);
-								mysqli_stmt_store_result($stmt3);
-								mysqli_stmt_bind_result($stmt3, $classId, $classSectionId, $classDate, $classType, $classStartTimeId, $classEndTimeId, $classRoomNo, $classQRCode, $classQRDisplayStartTime, $classQRDisplayEndTime, $classCreatedAt);
-								while (mysqli_stmt_fetch($stmt3)){
-									$sql4 = "INSERT INTO attendances (StudentId, ClassId, CreatedAt) VALUES (?, ?, current_timestamp());";
-									$stmt4 = mysqli_stmt_init($conn);
-									if (!mysqli_stmt_prepare($stmt4, $sql4)) {
-										$_SESSION['sectionId'] = $sectionId;
-										$_SESSION['sectionName'] = $sectionName;
-										header("Location: ../createclass.php?error=sqlerror");
-										exit();
+								if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+									$_SESSION['sectionId'] = $sectionId;
+									$_SESSION['sectionName'] = $sectionName;
+									header("Location: ../addstudent.php?error=sqlerror");
+									exit();
+								}
+								else{
+									mysqli_stmt_bind_param($stmt, "ss", $sectionId, $foundId);
+									mysqli_stmt_execute($stmt);
+
+									$sql3 = "SELECT * FROM classes where sectionId = ?;";
+									$stmt3 = mysqli_stmt_init($conn);
+									if (!mysqli_stmt_prepare($stmt3, $sql3)) {
+										echo '<p class="error-msg">Error retrieving data</p>';
 									}
 									else{
+										mysqli_stmt_bind_param($stmt3, "s", $sectionId);
+										mysqli_stmt_execute($stmt3);
+										mysqli_stmt_store_result($stmt3);
+										mysqli_stmt_bind_result($stmt3, $classId, $classSectionId, $classDate, $classType, $classStartTimeId, $classEndTimeId, $classRoomNo, $classQRCode, $classQRDisplayStartTime, $classQRDisplayEndTime, $classCreatedAt);
+										while (mysqli_stmt_fetch($stmt3)){
+											$sql4 = "INSERT INTO attendances (StudentId, ClassId, CreatedAt) VALUES (?, ?, current_timestamp());";
+											$stmt4 = mysqli_stmt_init($conn);
+											if (!mysqli_stmt_prepare($stmt4, $sql4)) {
+												$_SESSION['sectionId'] = $sectionId;
+												$_SESSION['sectionName'] = $sectionName;
+												header("Location: ../createclass.php?error=sqlerror");
+												exit();
+											}
+											else{
 										//$entry = "0";
-										mysqli_stmt_bind_param($stmt4, "ss", $foundId, $classId);
-										mysqli_stmt_execute($stmt4);
-									}
+												mysqli_stmt_bind_param($stmt4, "ss", $foundId, $classId);
+												mysqli_stmt_execute($stmt4);
+											}
+										}
+										$_SESSION['sectionId'] = $sectionId;
+										$_SESSION['sectionName'] = $sectionName;
+										header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname."&existing=Existing%20Student%20");
+										exit();
+									}	
 								}
+							}
+							else{
 								$_SESSION['sectionId'] = $sectionId;
 								$_SESSION['sectionName'] = $sectionName;
-								header("Location: ../addstudent.php?success=added&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname."&existing=Existing%20Student%20");
+								header("Location: ../addstudent.php?error=alreadyexists&aid=".$academicId."&name=".$stu_firstname." ".$stu_lastname);
 								exit();
-							}	
+							}
 						}
+
+						
 					}
 					else{
 						$_SESSION['sectionId'] = $sectionId;
