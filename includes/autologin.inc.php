@@ -1,5 +1,5 @@
 <?php session_start();
-if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
+if ((isset($_SESSION['userId']) && $_SESSION['userId']!== "")) {
 	if ($_SESSION['userEmail'] == "admin") {
 		header("Location: admin/profile.php");
 	}
@@ -11,4 +11,9 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 		header("Location: student/dashboard.php");
 		exit();
 	}
+}
+
+if ((isset($_SESSION['userAcademicId']) && $_SESSION['userAcademicId']!== "")) {
+	header("Location: student/dashboard.php");
+	exit();
 }

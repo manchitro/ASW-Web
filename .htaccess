@@ -1,2 +1,2 @@
 Options All -Indexes
-ErrorDocument 404 /404.php
+ErrorDocument 404 /asw/404.php

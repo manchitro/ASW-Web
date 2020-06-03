@@ -54,15 +54,19 @@ else{
 					echo '<tr><td class="key">First Name: </td><td class="value"><input type="text" name="firstName" value="'.$user_firstName.'"></td></tr>';
 					echo '<tr><td class="key">Last Name: </td><td class="value"><input type="text" name="lastName" value="'.$user_lastName.'"></td></tr>';
 					echo '<tr><td class="submit-button"><input type="submit" name="submit" value="Save"></td><td></td></tr>';
+					$exists = true;
 				}
 				else{
 					echo '<p class="warning">You currently do not exist in the ASW database. When a faculty puts you in a section, your profile will be automatically created.</p>';
+					$exists = false;
 				}
 			}
 			?>
 			</table>
 		</form>
-		<p class="warning">Warning: If you change your name it will be updated throughout the system. Meaning, your faculty will see your updated name beside your ID. Change your name only when it is incorrect and always use your real name used by your university.</p>
+		<?php if ($exists == true) {
+			echo '<p class="warning">Warning: If you change your name it will be updated throughout the system. Meaning, your faculty will see your updated name beside your ID. Change your name only when it is incorrect and always use your real name as it is used by your university.</p>';
+		} ?>
 		</div>
 	</div>
 </body>

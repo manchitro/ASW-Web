@@ -1,68 +1,94 @@
 <?php
-$backGround = "images/classroom.jpg";
-$gh_icon = "images/gh_icon.png";
-$fb_icon = "images/fb_icon.png";
-$gmail_icon = "images/gmail_icon.png";
-
 include 'includes/autologin.inc.php';
 ?>
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>ASW - Login</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	
-	<link rel="icon" href="favicon.png">
-	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body style="background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('<?php echo $backGround; ?>');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center center;
-background-attachment: fixed;">
-<?php include 'header.php';?>
+<body>
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.php" class="logo"><strong>ATTENDANCE SCANNING WIZARD</strong></a>
+			<nav id="nav">
+				<a href="index.php">Home</a>
+				<a href="login.php">Login</a>
+				<a href="signup.php">Signup</a>
+				<a href="about.php">About</a>
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
 
-<div class="banner-login">
-	<h1 id="title">Login</h1>
-	<p>(Students login with VUES credentials)</p>
-	<div class="divider-banner"></div>
-	<div class="agileits-top">
-		<form action="includes/login.inc.php" method="post">
-			<?php 
-			if (isset($_GET['signup'])) {
-				if ($_GET['signup'] == 'success') {
-					echo '<p>Your account has been created. You can now login</p>';
-				}
+	<!-- Banner -->
+	<section id="banner">
+		<div class="inner">
+			<header>
+				<h1 id="page-title">Login</h1>
+				<p>Students login with VUES credential</p>
+			</header>
+			<div class="divider-banner"></div>
+			<div class="flex ">
+
+				<form action="includes/login.inc.php" method="post">
+					<?php
+					if (isset($_GET['signup'])) {
+			if ($_GET['signup'] == 'success') {
+				echo '<p style = "color: mediumseagreen;">Your account has been created. You can now login</p>';
 			}
-			if (isset($_GET['error'])) {
-				if ($_GET['error'] == 'invalidlogin') {
-					echo "<p>Invalid Email or ID. Please try again</p>";
-				}
-				if ($_GET['error'] == 'badcred') {
-					echo "<p>The Email/ID or password you've entered is incorrect. Please try again</p>";
-				}
-				if ($_GET['error'] == 'nosession') {
-					echo "<p>Please login first</p>";
-				}
-				if ($_GET['error'] == 'vuesvalfailed') {
-					echo "<p>Could not verify your VUES ID and Password. Please try again</p>";
-				}
+		}
+		if (isset($_GET['error'])) {
+			if ($_GET['error'] == 'invalidlogin') {
+				echo '<p style = "color: tomato;">Invalid Email or ID. Please try again</p>';
 			}
-			?>
-			<input class="text" type="text" name="email" placeholder="Academic ID or Email" required="">
-			<input class="text" type="password" name="password" placeholder="Password" required="">
+			if ($_GET['error'] == 'badcred') {
+				echo '<p style = "color: tomato;">The Email/ID or password you\'ve entered is incorrect. Please try again</p>';
+			}
+			if ($_GET['error'] == 'nosession') {
+				echo '<p style = "color: tomato;">Please login first</p>';
+			}
+			if ($_GET['error'] == 'vuesvalfailed') {
+				echo '<p style = "color: tomato;">Could not verify your VUES ID and Password. Please try again</p>';
+			}
+		}
+					?>
+					<input class="text" type="text" name="email" placeholder="Academic ID or Email" required="">
+					<input class="text" type="password" name="password" placeholder="Password" required="">
 
-			<button type="submit" name="login-submit">LOGIN</button>
-		</form>
-		<p id="already">Need an Account? <a href="signup.php"> Signup Now!</a></p>
-		<p id="reset"><a href="passwordreset.php"> Forgot Password?</a></p>
-	</div>
-</div>
+					<button type="submit" name="login-submit">LOGIN</button>
+					<p id="already">Need an Account? <a href="signup.php"> Signup Now!</a></p>
+					<p id="reset"><a href="passwordreset.php"> Forgot Password?</a></p>
+				</form>
 
-<?php include 'footer.php';?>
+
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer">
+		<div class="inner">
+			<div class="copyright">
+				Attendance Scanning Wizard | Contact Developer
+			</div>
+			<div class="contact-links">
+				<ul class="contact-list">
+					<li><a href="https://github.com/manchitro/"><img src="images/gh_icon.png"></a></li>
+					<li><a href="https://www.facebook.com/ortihcnam"><img src="images/fb_icon.png"></a></li>
+					<li><a href="mailto:initialsaremsu@gmail.com"><img src="images/gmail_icon.png"></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>
-

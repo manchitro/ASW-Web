@@ -1,38 +1,60 @@
 <?php
-$backGround = "/images/classroom.jpg";
-$gh_icon = "/images/gh_icon.png";
-$fb_icon = "/images/fb_icon.png";
-$gmail_icon = "/images/gmail_icon.png";
-$login_icon = "/images/login.png";
-$project_icon = "/images/project.png";
-$scan_icon = "/images/scan.png";
-$down_win = "/images/windows_download.png";
-$down_android = "/images/android_download.png";
-$down_ios = "/images/ios_download.png";
+include 'includes/autologin.inc.php';
 ?>
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>ASW - Home</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-	
-	<link rel="icon" href="favicon.png">
-	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body style="background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('/images/classroom.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center center;
-background-attachment: fixed;">
-	<?php include 'header.php';?>
+<body>
 
-	<div class="banner">
-		<h1 id="title">Oh no! Page not found</h1>
-		<p id="subtitle"><a href="/index.php">Go Home</a></p>
-	</div>
-	<?php include 'footer.php';?>
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.php" class="logo"><strong>ATTENDANCE SCANNING WIZARD</strong></a>
+			<nav id="nav">
+				<a href="index.php">Home</a>
+				<a href="login.php">Login</a>
+				<a href="signup.php">Signup</a>
+				<a href="about.php">About</a>
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+
+	<!-- Banner -->
+	<section id="banner">
+		<div class="inner">
+			<header>
+				<h1 id="page-title">Oh no! Page not found</h1>
+				<p><a href="index.php">Go Home</a></p>
+			</header>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<div class="copyright">
+				Attendance Scanning Wizard | Contact Developer
+			</div>
+			<div class="contact-links">
+				<ul class="contact-list">
+					<li><a href="https://github.com/manchitro/"><img src="images/gh_icon.png"></a></li>
+					<li><a href="https://www.facebook.com/ortihcnam"><img src="images/fb_icon.png"></a></li>
+					<li><a href="mailto:initialsaremsu@gmail.com"><img src="images/gmail_icon.png"></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>

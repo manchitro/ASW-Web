@@ -1,3 +1,6 @@
+<?php
+include 'includes/autologin.inc.php';
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -29,7 +32,7 @@
 				<h1 id="page-title">Welcome to ASW</h1>
 				<p>Automate Your Class with Attendance Scanning</p>
 			</header>
-
+				<div class="divider-banner"></div>
 			<div class="flex ">
 
 				<div onclick="location.href='login.php';" style="cursor: pointer;">
