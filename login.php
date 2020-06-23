@@ -1,6 +1,3 @@
-<?php
-include 'includes/autologin.inc.php';
-?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -33,28 +30,9 @@ include 'includes/autologin.inc.php';
 			</header>
 			<div class="divider-banner"></div>
 			<div class="flex ">
-
 				<form action="includes/login.inc.php" method="post">
 					<?php
-					if (isset($_GET['signup'])) {
-			if ($_GET['signup'] == 'success') {
-				echo '<p style = "color: mediumseagreen;">Your account has been created. You can now login</p>';
-			}
-		}
-		if (isset($_GET['error'])) {
-			if ($_GET['error'] == 'invalidlogin') {
-				echo '<p style = "color: tomato;">Invalid Email or ID. Please try again</p>';
-			}
-			if ($_GET['error'] == 'badcred') {
-				echo '<p style = "color: tomato;">The Email/ID or password you\'ve entered is incorrect. Please try again</p>';
-			}
-			if ($_GET['error'] == 'nosession') {
-				echo '<p style = "color: tomato;">Please login first</p>';
-			}
-			if ($_GET['error'] == 'vuesvalfailed') {
-				echo '<p style = "color: tomato;">Could not verify your VUES ID and Password. Please try again</p>';
-			}
-		}
+						
 					?>
 					<input class="text" type="text" name="email" placeholder="Academic ID or Email" required="">
 					<input class="text" type="password" name="password" placeholder="Password" required="">

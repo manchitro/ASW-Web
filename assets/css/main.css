@@ -2945,6 +2945,10 @@ button:disabled,
   display: none;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .banner-signup{
 	padding-bottom: 0 !important;
 }

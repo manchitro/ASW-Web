@@ -21,21 +21,11 @@ $pial = "images/pial.jpg";
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="icon" href="favicon.png">
 </head>
 <body>
 	<!-- Header -->
-	<header id="header">
-		<div class="inner">
-			<a href="index.php" class="logo"><strong>ATTENDANCE SCANNING WIZARD</strong></a>
-			<nav id="nav">
-				<a href="index.php">Home</a>
-				<a href="login.php">Login</a>
-				<a href="signup.php">Signup</a>
-				<a href="about.php">About</a>
-			</nav>
-			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-		</div>
-	</header>
+	<?php include 'header.php'; ?>
 
 <div class="banner-about">
 	<h1 id="title-about">About</h1>
@@ -78,26 +68,10 @@ $pial = "images/pial.jpg";
 	</div>
 </div>
 
-<footer id="footer">
-	<div class="inner">
-		<div class="copyright">
-			Attendance Scanning Wizard | Contact Developer
-		</div>
-		<div class="contact-links">
-			<ul class="contact-list">
-				<li><a href="https://github.com/manchitro/"><img src="images/gh_icon.png"></a></li>
-				<li><a href="https://www.facebook.com/ortihcnam"><img src="images/fb_icon.png"></a></li>
-				<li><a href="mailto:initialsaremsu@gmail.com"><img src="images/gmail_icon.png"></a></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+<?php include 'footer.php'; ?>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<?php include 'scripts.php'; ?>
 
 </body>
 </html>

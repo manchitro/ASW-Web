@@ -25,7 +25,7 @@ if (isset($_SESSION['userId']) && $_SESSION['userId']!== "") {
 						mysqli_stmt_bind_param($stmt2, "s", $classId);
 						mysqli_stmt_execute($stmt2);
 
-						echo date("Y-m-d H:i:s");
+						//echo date("Y-m-d H:i:s");
 					}
 			}
 			else{

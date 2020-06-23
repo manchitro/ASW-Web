@@ -45,6 +45,7 @@ for(let qrButton of qrButtonList){
 							console.log(data);
 						}
 					});
+					$('#qrcode').fadeOut();
 				});
 			}
 		});
