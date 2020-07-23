@@ -42,7 +42,9 @@ include 'includes/autologin.inc.php';
 					<input class="text" type="text" name="academicid" id="academicid" placeholder="Academic ID (XXXX-XXXX-X) (Warning: Cannnot be changed in the future)" required title="XXXX-XXXX-X format required" pattern="^\d{4}-\d{4}-[1-3]$" value="<?php echo(isset($_GET['academicid']))?$_GET['academicid']:''?>" autocomplete="off">
 					<input class="text" type="text" name="firstname" id="firstname" placeholder="First Name" required="" value="<?php echo(isset($_GET['firstname']))?$_GET['firstname']:''?>">
 					<input class="text" type="text" name="lastname" id="lastname" placeholder="Last Name" required="" value="<?php echo(isset($_GET['lastname']))?$_GET['lastname']:''?>">
+
 					<input class="text-email" type="email" name="email" id="email" placeholder="Academic Email (@aiub.edu)" required title="You need an aiub.edu email to sign up" pattern="^[a-zA-Z0-9]+@aiub\.edu$" value="<?php echo(isset($_GET['email']))?$_GET['email']:''?>">
+					
 					<input class="text" type="password" name="password" id="password" placeholder="Password" required title="Password has to be at least 6 characters long. Mix of uppercase, lowercase, numbers is recommended!" pattern=".{6,}" autocomplete="new-password">
 					<input class="text-w3lpass" type="password" name="cpassword" id="confirm_password" placeholder="Confirm Password" required="">
 
